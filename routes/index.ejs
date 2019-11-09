@@ -11,7 +11,7 @@
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href=":Strain_year/:yearRange-yearRange">Substrain 1</a>
+		        <a href="H3N2_1995-1995">Substrain 1</a>
 		        <a href="#">Substrain 2</a>
 		        <a href="#">Substrain 3</a>
 		      </div>
@@ -40,11 +40,6 @@
 		  	<div id="fvH"></div>
 		  	<div id="fvN"></div>
 		  	<div id="fv2"></div>
-		    <h2>Past Outbreak News</h2>
-		    	<p>Ligma</p>
-		    <h2>Strain Similarity</h2>
-		    	<p>This strain is x% similar to the most recent strain</p>
-		    <h2>Severity</h2>
 			<div class = "whiteBG">
 		  		<div id="fv1" class = "graph"></div>
 		  	</div>
@@ -72,7 +67,41 @@
 		
 		<script>
 
-			var ftH = new FeatureViewer(sequenceH,
+			var probabilityIntervals = <%= probabilityIntervals %>;
+
+			var sequence = <%= sequence %>;
+
+			var ddata = [];
+
+			for (var i=1;i<100;i++) {
+			    var count = Math.floor((Math.random() * 20) + 1);
+		        ddata.push({
+		            x: i*2,
+		            y:count
+		        })
+			}
+
+
+			mutationIntervalsH =  [];
+
+			for (var i = 0; i < probabilityIntervals.length; i++){
+				mutationIntervalsH.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			    console.log(mutationIntervalsH);
+			}
+
+			mutationIntervalsN =  [];
+
+			for (var i = 0; i < probabilityIntervals.length; i++){
+				mutationIntervalsN.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			}
+
+			var ftH = new FeatureViewer(sequence,
                '#fvH',
                 {
                     showAxis: true,
@@ -82,7 +111,18 @@
                     bubbleHelp:true, 
                     zoomMax:50 //define the maximum range of the zoom
                 });
-			var ftN = new FeatureViewer(sequenceH,
+
+			ftH.addFeature({
+			    data: mutationIntervalsH,
+				name: "Hemagglutinin",
+				className: "test1",
+				color: "#005572",
+				type: "rect",
+   				filter: "type1"
+			});
+
+
+			var ftN = new FeatureViewer(sequence,
                '#fvN',
                 {
                     showAxis: true,
@@ -92,22 +132,23 @@
                     bubbleHelp:true, 
                     zoomMax:50 //define the maximum range of the zoom
                 });
+
+			ftN.addFeature({
+			    data: mutationIntervalsN,
+				name: "Neuraminidase",
+				className: "test1",
+				color: "#005572",
+				type: "rect",
+				filter: "type1"
+			});
                             
 			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
 			//var ft = new FeatureViewer(213,'#fv1');
 
 			// data should be dependent on the particular strain they send and should pull from db accordingly 
 			// Combination of H and N, 2:1 ratio in terms of weighting
-			var data = [];
-			for (var i=1;i<100;i++) {
-			    var count = (Math.random() * 2.6);
-			    data.push({
-			        x: i*1.5,
-			        y:count
-			    })
-			}
 
-			var b = <%= viewpd %>
+			var b = <%= viewpd %>;
 
 			if(b){
 				var pft = new FeatureViewer('MALWMRLLPLLALLALWGPGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLE',
@@ -130,43 +171,6 @@
             }           
 			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
 			//var ft = new FeatureViewer(213,'#fv1');
-
-			mutationIntervalsH =  [];
-
-			for (var i = 0; i < probabilityIntervalsH.length; i++){
-				mutationIntervalsH.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
-			    })
-			}
-
-			mutationIntervalsN =  [];
-
-			for (var i = 0; i < probabilityIntervalsN.length; i++){
-				mutationIntervalsN.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
-			    })
-			}
-
-
-			ftH.addFeature({
-			    data: mutationIntervalsH,
-				name: "Hemagglutinin",
-				className: "test1",
-				color: "#005572",
-				type: "rect",
-   				filter: "type1"
-			});
-
-			ftN.addFeature({
-			    data: mutationIntervalsN,
-				name: "Neuraminidase",
-				className: "test1",
-				color: "#005572",
-				type: "rect",
-				filter: "type1"
-			});
 
 			
 
