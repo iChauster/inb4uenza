@@ -5,7 +5,7 @@ var path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render("index")
+	res.render("about")
 });
 
 router.get('/:strain', function(req, res, next) {
@@ -16,6 +16,7 @@ router.get('/:strain', function(req, res, next) {
 	console.log(strain)
 	console.log(year)
 	Strain.findOne({strain: strain, year: year}).then(result => {
+		console.log(result)
 		res.render("index", {sequence: result.seq, 
 			viewpd: result.last, 
 			news: result.news, 
