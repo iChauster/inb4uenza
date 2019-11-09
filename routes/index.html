@@ -1,10 +1,54 @@
 <html>
 	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/calipho-sib/feature-viewer/v1.0.0/dist/feature-viewer.min.css">
 
+	<link rel="stylesheet" type="text/css" href="index.css">
 	<script src="https://cdn.rawgit.com/calipho-sib/feature-viewer/v1.0.0/dist/feature-viewer.bundle.js"></script>
 
 	<body>
-		<div id="fv1"></div>
+		
+		<div class="splitl left">
+		    <div class="sidenav">
+		      <h2>Influenza A Strains</h2>
+		      <button class="dropdown-btn">Strain 1
+		        <i class="fa fa-caret-down"></i>
+		      </button>
+		      <div class="dropdown-container">
+		        <a href=":Strain/:year">Substrain 1</a>
+		        <a href="#">Substrain 2</a>
+		        <a href="#">Substrain 3</a>
+		      </div>
+
+		      <button class="dropdown-btn">Strain 2
+		        <i class="fa fa-caret-down"></i>
+		      </button>
+		      <div class="dropdown-container">
+		        <a href="#">Link 1</a>
+		        <a href="#">Link 2</a>
+		        <a href="#">Link 3</a>
+		      </div>
+
+		      <button class="dropdown-btn">Strain 3
+		        <i class="fa fa-caret-down"></i>
+		      </button>
+		      <div class="dropdown-container">
+		        <a href="#">Link 1</a>
+		        <a href="#">Link 2</a>
+		        <a href="#">Link 3</a>
+		      </div>
+		    </div>
+		</div>
+
+		<div class="splitr right">
+		  	<div id="fv1"></div>
+		    <h2>Past Outbreak News</h2>
+		    	<p>Ligma</p>
+		    <h2>Strain Similarity</h2>
+		    	<p>This strain is x% similar to the most recent strain</p>
+		    <h2>Severity</h2>
+		  </div>
+		</div>
+
+
 		<script>
 			var ft = new FeatureViewer('MALWMRLLPLLALLALWGPGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLE',
                            '#fv1',
@@ -18,19 +62,44 @@
                             });
                             
 			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
-			var ft = new FeatureViewer(213,'#fv1');
+			//var ft = new FeatureViewer(213,'#fv1');
+
+			var dataDemo = [];
+			for (var i=1;i<100;i++) {
+			    var count = Math.floor((Math.random() * 20) + 1);
+			    dataDemo.push({
+			        x: i*2,
+			        y:count
+			    })
+			}
 
 			ft.addFeature({
-			    data: [{x:20,y:21},{x:46,y:100},{x:123,y:167}],
+			    data:dataDemo,
 			    name: "test feature 1",
-			    className: "test1", //can be used for styling
+			    className: "test5", //can be used for styling
 			    color: "#0F8292",
-			    height: 8,
-			    type: "path" // ['rect', 'path', 'line']
+			    type: "line" // ['rect', 'path', 'line']
 			});
 
 		</script>
 
+		<script>
+			var dropdown = document.getElementsByClassName("dropdown-btn");
+			var i;
+
+			for (i = 0; i < dropdown.length; i++) {
+			  dropdown[i].addEventListener("click", function() {
+			    this.classList.toggle("active");
+			    var dropdownContent = this.nextElementSibling;
+			    if (dropdownContent.style.display === "block") {
+			      dropdownContent.style.display = "none";
+			    } else {
+			      dropdownContent.style.display = "block";
+			    }
+			  });
+			}
+
+		</script>
 
 
 </html>
