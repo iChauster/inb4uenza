@@ -94,6 +94,6 @@ function addStrain(strainName, pathToFile) {
 	    })
 }
 
-addStrain("H3N2", "H3N2_4_China")
+//addStrain("H3N2", "H3N2_4_China")
 
 module.exports = app;
