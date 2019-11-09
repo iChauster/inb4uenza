@@ -5,8 +5,12 @@ var app = express();
 var Schema = mongoose.Schema;
 
 var strainSchema = new Schema({
-	year: {type: Number},
+	strain: {type: String},
+	year: {type: String},
 	seq: {type: String},
+	outbreak: {type: Number},
+	last: {type: Boolean},
+	probabilityIntervals: [],
 	news: [{title: {type: String}, link: {type: String}}]
 });
 
