@@ -5,7 +5,7 @@ var path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render("index",{viewpd: false})
+	res.render("about")
 });
 
 router.get('/:strain', function(req, res, next) {
@@ -16,8 +16,12 @@ router.get('/:strain', function(req, res, next) {
 	console.log(strain)
 	console.log(year)
 	Strain.findOne({strain: strain, year: year}).then(result => {
+		if (result == null) {
+			console.log("NO RESULTS FOR " + strain + " " + year)
+		}
+		last = (result.last) ? result.last : false
 		res.render("index", {sequence: result.seq, 
-			viewpd: result.last, 
+			viewpd: last, 
 			news: result.news, 
 			probabilityIntervals: result.probabilityIntervals,
 			strain: result.strain,

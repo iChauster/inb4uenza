@@ -67,10 +67,14 @@
 		
 		<script>
 
-			var probabilityIntervals = <%= probabilityIntervals %>;
+			var pi = [];
+    		<% for (var i = 0; i < probabilityIntervals.length; i++) { %>
+    			pi.push([<%= probabilityIntervals[i] %>])
+    		<%}%>
+    		console.log(pi)
 
-			var sequence = <%= sequence %>;
-
+			var sequence = "<%= sequence %>";
+			console.log(sequence)
 			var ddata = [];
 
 			for (var i=1;i<100;i++) {
@@ -81,8 +85,14 @@
 		        })
 			}
 
+<<<<<<< HEAD
 
 			var mutationIntervalsH =  [];
+=======
+			var probabilityIntervals = pi;
+			
+			mutationIntervalsH =  [];
+>>>>>>> 607ce027c2c9f97b64d7677d125b063e83e71255
 
 			for (var i = 0; i < probabilityIntervals.length; i++){
 				mutationIntervalsH.push({
