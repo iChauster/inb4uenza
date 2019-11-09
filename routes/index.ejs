@@ -37,13 +37,34 @@
 		</div>
 
 		<div class="splitr right">
-		  	<div id="fv1"></div>
-		    <h2>Past Outbreak News</h2>
-		    	<p>Ligma</p>
-		    <h2>Strain Similarity</h2>
-		    	<p>This strain is x% similar to the most recent strain</p>
-		    <h2>Severity</h2>
+			<div class = "whiteBG">
+		  		<div id="fv1" class = "graph"></div>
+		  	</div>
+		  	<div class = "info">
+			  	<div id = "news" class = "card">
+			  		<div class = "colorbar"></div>
+			    <h2 class = "card-title">Past Outbreak News</h2>
+			    	<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor r</p>
+			    	<h5 class = "read-more">Read More</h5>
+			    </div>
+			    <div class = "container">
+				    <div class = "card similarity">
+				    	<div class = "colorbar"></div>
+				    <h2 class = "card-title">Strain Similarity</h2>
+				    	<p>This strain is x% similar to the most recent strain</p>
+				    </div>
+				    <div class = "card severity">
+				    	<div class = "colorbar"></div>
+				    <h2 class = "card-title">Severity</h2>
+					</div>
+				</div>
+			</div>
 		  </div>
+
+
+
+
+
 		</div>
 
 
@@ -57,6 +78,7 @@
                                 toolbar:true, //current zoom & mouse position
                                 bubbleHelp:false, 
                                 zoomMax:50 //define the maximum range of the zoom
+
                             });
                             
 			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
@@ -75,7 +97,7 @@
 			    data:dataDemo,
 			    name: "test feature 1",
 			    className: "test5", //can be used for styling
-			    color: "#0F8292",
+			    color: "#ff7d69",
 			    type: "line" // ['rect', 'path', 'line']
 			});
 
