@@ -1,0 +1,37 @@
+<html>
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/calipho-sib/feature-viewer/v1.0.0/dist/feature-viewer.min.css">
+
+	<script src="https://cdn.rawgit.com/calipho-sib/feature-viewer/v1.0.0/dist/feature-viewer.bundle.js"></script>
+
+	<body>
+		<div id="fv1"></div>
+		<script>
+			var ft = new FeatureViewer('MALWMRLLPLLALLALWGPGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLE',
+                           '#fv1',
+                            {
+                                showAxis: true,
+                                showSequence: true,
+                                brushActive: true, //zoom
+                                toolbar:true, //current zoom & mouse position
+                                bubbleHelp:true, 
+                                zoomMax:50 //define the maximum range of the zoom
+                            });
+                            
+			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
+			var ft = new FeatureViewer(213,'#fv1');
+
+			ft.addFeature({
+			    data: [{x:20,y:21},{x:46,y:100},{x:123,y:167}],
+			    name: "test feature 1",
+			    className: "test1", //can be used for styling
+			    color: "#0F8292",
+			    height: 8,
+			    type: "path" // ['rect', 'path', 'line']
+			});
+
+		</script>
+
+
+
+</html>
+
