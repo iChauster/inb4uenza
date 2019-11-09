@@ -37,7 +37,9 @@
 		</div>
 
 		<div class="splitr right">
-		  	<div id="fv1"></div>
+		  	<div id="fvH"></div>
+		  	<div id="fvN"></div>
+		  	<div id="fv2"></div>
 		    <h2>Past Outbreak News</h2>
 		    	<p>Ligma</p>
 		    <h2>Strain Similarity</h2>
@@ -45,39 +47,108 @@
 		    <h2>Severity</h2>
 		  </div>
 		</div>
-
-
+		
 		<script>
-			var ft = new FeatureViewer('MALWMRLLPLLALLALWGPGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLE',
-                           '#fv1',
-                            {
-                                showAxis: true,
-                                showSequence: true,
-                                brushActive: true, //zoom
-                                toolbar:true, //current zoom & mouse position
-                                bubbleHelp:true, 
-                                zoomMax:50 //define the maximum range of the zoom
-                            });
-                            
-			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
-			//var ft = new FeatureViewer(213,'#fv1');
 
-			var dataDemo = [];
+			var ftH = new FeatureViewer(sequenceH,
+               '#fvH',
+                {
+                    showAxis: true,
+                    showSequence: true,
+                    brushActive: true, //zoom
+                    toolbar:true, //current zoom & mouse position
+                    bubbleHelp:true, 
+                    zoomMax:50 //define the maximum range of the zoom
+                });
+
+			var ftN = new FeatureViewer(sequenceH,
+               '#fvN',
+                {
+                    showAxis: true,
+                    showSequence: true,
+                    brushActive: true, //zoom
+                    toolbar:true, //current zoom & mouse position
+                    bubbleHelp:true, 
+                    zoomMax:50 //define the maximum range of the zoom
+                });
+
+			// data should be dependent on the particular strain they send and should pull from db accordingly 
+			// Combination of H and N, 2:1 ratio in terms of weighting
+			var data = [];
 			for (var i=1;i<100;i++) {
-			    var count = Math.floor((Math.random() * 20) + 1);
-			    dataDemo.push({
-			        x: i*2,
+			    var count = (Math.random() * 2.6);
+			    data.push({
+			        x: i*1.5,
 			        y:count
 			    })
 			}
 
-			ft.addFeature({
-			    data:dataDemo,
-			    name: "test feature 1",
-			    className: "test5", //can be used for styling
+			var b = <%= viewpd %>
+
+			if(b){
+				var pft = new FeatureViewer('MALWMRLLPLLALLALWGPGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLE',
+	               '#fv2',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+
+				pft.addFeature({
+			    data: ddata,
+			    name: "Frequency Distibution",
+			    className: "test6", //can be used for styling
 			    color: "#0F8292",
 			    type: "line" // ['rect', 'path', 'line']
 			});
+
+            }           
+			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
+			//var ft = new FeatureViewer(213,'#fv1');
+
+			mutationIntervalsH =  [];
+
+			for (var i = 0; i < probabilityIntervalsH.length; i++){
+				mutationIntervalsH.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			}
+
+			mutationIntervalsN =  [];
+
+			for (var i = 0; i < probabilityIntervalsN.length; i++){
+				mutationIntervalsN.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			}
+
+
+			ftH.addFeature({
+			    data: mutationIntervalsH,
+				name: "Hemagglutinin",
+				className: "test1",
+				color: "#005572",
+				type: "rect",
+   				filter: "type1"
+			});
+
+			ftN.addFeature({
+			    data: mutationIntervalsN,
+				name: "Neuraminidase",
+				className: "test1",
+				color: "#005572",
+				type: "rect",
+				filter: "type1"
+			});
+
+			
+
+
 
 		</script>
 
