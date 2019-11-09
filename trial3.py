@@ -6,7 +6,7 @@ from Bio import pairwise2
 from Bio.pairwise2 import format_alignment
 
 #open FASTA file
-with open('../Downloads/FASTA (9).fa','r') as f:
+with open('./FASTA (9).fa','r') as f:
 	unformatted = f.readlines()
 
 #find start points in FASTA
@@ -17,7 +17,7 @@ for i in range(len(unformatted)):
 
 
 #open and cut down csv file with labels
-labels = pd.read_csv('../Downloads/flu (1).txt', delimiter = ",")
+labels = pd.read_csv('./flu (1).txt', delimiter = ",")
 abbrev = labels[['length','accession','date']]
 
 #finding possible
