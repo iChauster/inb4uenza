@@ -16,9 +16,12 @@ router.get('/:strain', function(req, res, next) {
 	console.log(strain)
 	console.log(year)
 	Strain.findOne({strain: strain, year: year}).then(result => {
-		console.log(result)
+		if (result == null) {
+			console.log("NO RESULTS FOR " + strain + " " + year)
+		}
+		last = (result.last) ? result.last : false
 		res.render("index", {sequence: result.seq, 
-			viewpd: result.last, 
+			viewpd: last, 
 			news: result.news, 
 			probabilityIntervals: result.probabilityIntervals,
 			strain: result.strain,
