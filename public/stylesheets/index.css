@@ -12,13 +12,14 @@
 
 .splitr {
   height: 100%;
-  width: 85%;
+  width: 80%;
   padding: 10px;
   position: fixed;
   z-index: 1;
   top: 0;
   overflow-x: hidden;
   padding-top: 0px;
+  border-radius: 20px 0px 0px 20px;
 }
 
 
@@ -31,7 +32,12 @@
 /* Control the right side */
 .right {
   right: 0;
-  background-color: white;
+  background-color: #f5f5ff;
+}
+
+/* Control the body */
+body {
+  background-color: #dadae6;
 }
 
 /* If you want the content centered horizontally and vertically */
@@ -52,14 +58,18 @@
 /* Fixed sidenav, full height */
 .sidenav {
   height: 100%;
-  width: 15%;
+  width: 20%;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #030406;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding: 20px 20px 20px 30px;
+}
+
+body {
+  background-color: #030406;
 }
 
 /* Style the sidenav links and the dropdown button */
@@ -106,4 +116,52 @@
 .fa-caret-down {
   float: right;
   padding-right: 8px;
+}
+
+.graph {
+  background-color: white;
+  margin-top: 20px;
+}
+
+.whiteBG {
+  margin: -10px;
+  margin-top: -30px;
+  padding: 20px;
+  background-color: white;
+}
+
+.card {
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+
+#news {
+  float: left;
+  width: 40%;
+  margin: 10px;
+  padding: 0px 15px 15px 15px;
+  height: 53%;
+}
+
+.info {
+  margin: 10px 10px 10px -10px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.colorbar {
+  margin: 0px -20px 0px -20px;
+  height: 2%;
+  background-color: blue;
+}
+
+.card-title {
+  margin-bottom: 20px
+}
+
+.read-more {
+  position: fixed;
+  bottom: 50;
+  text-decoration: underline blue;
 }
