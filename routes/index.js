@@ -4,10 +4,8 @@ var path = require('path');
 
 /* GET home page. */
 router.get('/:strain/:year', function(req, res, next) {
-	let strain = req.params.strain;
-	let year = req.params.year;
-
-	
+	var strain = req.params.strain;
+	var year = req.params.year;
 	res.render("./index")
 });
 
