@@ -101,8 +101,8 @@ body {
 
 /* Add an active class to the active dropdown button */
 .active {
-  background-color: green;
-  color: white;
+  background-color: #fcc203;
+  color: black;
 }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
@@ -133,14 +133,14 @@ body {
 .card {
   border-radius: 10px;
   background-color: white;
-  overflow: hidden;
+  padding: 0px 15px 15px 15px;
+  overflow: scroll;
 }
 
 #news {
   float: left;
   width: 40%;
-  margin: 10px;
-  padding: 0px 15px 15px 15px;
+  margin-right: 10px;
   height: 53%;
 }
 
@@ -152,7 +152,7 @@ body {
 
 .colorbar {
   margin: 0px -20px 0px -20px;
-  height: 2%;
+  height: 6px;
   background-color: blue;
 }
 
@@ -161,7 +161,30 @@ body {
 }
 
 .read-more {
-  position: fixed;
-  bottom: 50;
+  position: relative;
+  bottom: 0px;
   text-decoration: underline blue;
 }
+
+.similarity {
+  margin-bottom: 10px;
+  width: 51%;
+}
+
+.severity {
+  width: 51%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

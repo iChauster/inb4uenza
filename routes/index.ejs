@@ -48,16 +48,23 @@
 			    	<h5 class = "read-more">Read More</h5>
 			    </div>
 			    <div class = "container">
-				    <div class = "card">
+				    <div class = "card similarity">
+				    	<div class = "colorbar"></div>
 				    <h2 class = "card-title">Strain Similarity</h2>
 				    	<p>This strain is x% similar to the most recent strain</p>
 				    </div>
-				    <div class = "card">
+				    <div class = "card severity">
+				    	<div class = "colorbar"></div>
 				    <h2 class = "card-title">Severity</h2>
 					</div>
 				</div>
 			</div>
 		  </div>
+
+
+
+
+
 		</div>
 
 
@@ -69,8 +76,8 @@
                                 showSequence: true,
                                 brushActive: true, //zoom
                                 toolbar:true, //current zoom & mouse position
-                                bubbleHelp:true, 
-                                zoomMax:50 //define the maximum range of the zoom
+                                bubbleHelp:false, 
+                                zoomMax: 50 //define the maximum range of the zoom
                             });
                             
 			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
