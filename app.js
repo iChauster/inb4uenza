@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+var parse = require('csv-parse');
+var fs = require('fs');
+var Strain = require('./models/strain')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -21,6 +25,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+mongoose.connect(process.env.MLAB_URI || "mongodb://savan:isrobot1@ds241278.mlab.com:41278/hackpton2019", function (err) {
+	if(err) console.log(err);
+});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', (callback) => {
+	console.log('connection succ');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,7 +54,16 @@ app.use(function(err, req, res, next) {
 app.listen(1004);
 
 function addStrain() {
-	
+	var pathName = "";
+	fs.createReadStream(pathName)
+	    .pipe(parse({delimiter: ','}))
+	    .on('data', function(csvrow) {
+	        console.log(csvrow);
+	    })
+	    .on('end',function() {
+	      //do something wiht csvData
+	      console.log(csvData);
+	    });
 }
 
 module.exports = app;

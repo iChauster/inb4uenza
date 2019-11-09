@@ -6,6 +6,7 @@ var path = require('path');
 router.get('/', function(req, res, next) {
 	res.render("index",{viewpd: false})
 });
+
 router.get('/:strain/:year', function(req, res, next) {
 	var strain = req.params.strain
 	var year = req.params.year

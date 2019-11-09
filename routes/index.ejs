@@ -11,7 +11,7 @@
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href=":Strain/:year">Substrain 1</a>
+		        <a href=":Strain_year/:yearRange-yearRange">Substrain 1</a>
 		        <a href="#">Substrain 2</a>
 		        <a href="#">Substrain 3</a>
 		      </div>
@@ -45,6 +45,28 @@
 		    <h2>Strain Similarity</h2>
 		    	<p>This strain is x% similar to the most recent strain</p>
 		    <h2>Severity</h2>
+			<div class = "whiteBG">
+		  		<div id="fv1" class = "graph"></div>
+		  	</div>
+		  	<div class = "info">
+			  	<div id = "news" class = "card">
+			  		<div class = "colorbar"></div>
+			    <h2 class = "card-title">Past Outbreak News</h2>
+			    	<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor r</p>
+			    	<h5 class = "read-more">Read More</h5>
+			    </div>
+			    <div class = "container">
+				    <div class = "card similarity">
+				    	<div class = "colorbar"></div>
+				    <h2 class = "card-title">Strain Similarity</h2>
+				    	<p>This strain is x% similar to the most recent strain</p>
+				    </div>
+				    <div class = "card severity">
+				    	<div class = "colorbar"></div>
+				    <h2 class = "card-title">Severity</h2>
+					</div>
+				</div>
+			</div>
 		  </div>
 		</div>
 		
@@ -60,7 +82,6 @@
                     bubbleHelp:true, 
                     zoomMax:50 //define the maximum range of the zoom
                 });
-
 			var ftN = new FeatureViewer(sequenceH,
                '#fvN',
                 {
@@ -71,6 +92,9 @@
                     bubbleHelp:true, 
                     zoomMax:50 //define the maximum range of the zoom
                 });
+                            
+			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
+			//var ft = new FeatureViewer(213,'#fv1');
 
 			// data should be dependent on the particular strain they send and should pull from db accordingly 
 			// Combination of H and N, 2:1 ratio in terms of weighting
@@ -101,9 +125,7 @@
 			    data: ddata,
 			    name: "Frequency Distibution",
 			    className: "test6", //can be used for styling
-			    color: "#0F8292",
-			    type: "line" // ['rect', 'path', 'line']
-			});
+			    color: "#0F8292",})
 
             }           
 			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
@@ -147,8 +169,6 @@
 			});
 
 			
-
-
 
 		</script>
 
