@@ -4,8 +4,14 @@ var router = express.Router();
 var path = require('path');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/index', function(req, res, next) {
+	res.render("index")
+});
+router.get('/about', function(req, res, next) {
 	res.render("about")
+});
+router.get('/news', function(req, res, next) {
+	res.render("news")
 });
 
 router.get('/:strain', function(req, res, next) {
@@ -23,7 +29,7 @@ router.get('/:strain', function(req, res, next) {
 		documents.forEach((doc) => {
 			avgYearArray = doc.year.split("-")
 			avgYear = (parseInt(avgYearArray[0]) + parseInt(avgYearArray[1])) / 2
-			yearRange.push(avgYear)
+			yearRange.push({strain: doc.strain, year: doc.year, average:parseInt(avgYear)})
 
 			if (doc.year == year){
 				r = true
@@ -34,6 +40,23 @@ router.get('/:strain', function(req, res, next) {
 				}
 			}
 		});
+		yearRange.sort(function(a,b){
+			return a["average"] - b["average"]
+		});
+		finalRange = []
+		hrefs = []
+		for (var i = 1; i < yearRange.length; i ++){
+			if(yearRange[i]["average"] - yearRange[i - 1]["average"] >= 2){
+				var item = yearRange[i]
+				finalRange.push(item["average"])
+				hrefs.push("/" + item["strain"] + "_" + item["year"])
+			}
+		}
+
+		if (finalRange.length > 10){
+			finalRange.slice(-10)
+			hrefs.slice(-10)
+		}
 
 		if (!r){
 			console.log('nothin')
@@ -51,7 +74,8 @@ router.get('/:strain', function(req, res, next) {
 				sendObject["sequenceN"] = resultN.seq
 				sendObject["probabilityIntervalsN"] = resultN.probabilityIntervals
 			}
-			sendObject["yearRange"] = yearRange
+			sendObject["yearRange"] = finalRange
+			sendObject["hrefs"] = hrefs
 			res.render("index", sendObject)
 		}
 	})
