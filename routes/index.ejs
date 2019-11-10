@@ -45,29 +45,60 @@
 		</div>
 
 		<div class="splitr right">
-		  	<div id="fvH"></div>
-		  	<div id="fvN"></div>
-		  	<div id="fv2"></div>
+		  	
 			<div class = "whiteBG">
+				<div id="fvH"></div>
+		  		<div id="fvN"></div>
+		  		<div id="fv2"></div>
 		  		<div id="fv1" class = "graph"></div>
 		  	</div>
 		  	<div class = "info">
 			  	<div id = "news" class = "card">
 			  		<div class = "colorbar"></div>
 				    <div class = "description-flex-container news-description">
-				    	<img src="">
-
-				    	<p>news 1</p>
-						<p>news 2</p>
-						<p class="activet">news 3</p>
-						<p>news 4</p>
-						<p>news 5</p>
-						<p>news 6</p>
-						<p>news 7</p>
-						<p>news 8</p>
-						<p>news 9</p>
-						<p>news 10</p>
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/502c7051-0135-44b8-98a3-4a766aa344b0.gif">
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/1fad10a2-6f02-4076-9c9c-7e17928b7b9f.gif">
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/e6265e5d-bc7f-4e3a-9688-14a7ee177e9c.gif" class="activet">
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/e9faaf90-50d4-4ae1-93d5-03add94e0235.gif">
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/f1d0e188-25aa-4939-92d7-621e4a0f65b8.gif">
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/98602077-7144-4ed5-8ced-86268d8c50b2.gif">
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/a7d7b32e-030a-4427-9394-0c2b9a858476.gif">
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/49525df7-5709-4173-97d5-ea02514da47d.gif">
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/743d973d-af55-4325-817a-beaa5743323c.gif">
+				    	<img src="https://storage.googleapis.com/gweb-newslab-data-viz-tool.appspot.com/uploads/2c5d5a0f-2f48-41f3-ba89-1d4517a74289.gif">
 					</div>
+			    </div>
+			    <div class = "card description">
+			  		<div class = "colorbar"></div>
+				    <h3>Influenza A virus subtype H1N1</h3>
+
+					<p>Genus:	Alphainfluenzavirus
+
+					Species:	Influenza A virus
+					Serotype:	Influenza A virus subtype H1N1
+
+					Known Outbreaks: 
+					1976 swine flu
+					2006 H5N1 India
+					2007 Australian equine
+					2007 Bernard Matthews H5N1
+					2008 West Bengal
+					2015 United States H5N2 outbreak
+
+					Known Pandemics: 
+					1918 Spanish flu
+					1957 Asian flu
+					1968–1969 Hong Kong
+					2009 swine
+
+					Past Vaccines:
+					Fluzone
+					Influvac
+					Fluvax
+					Flucelvax
+					Fluad
+					Fluverin
+					Optaflu</p>
 			    </div>
 			</div>
 			
@@ -275,7 +306,7 @@
 
 		<script>
 			var inputs = $('.input');
-			var paras = [$('.news-description').find('p'), $('.similarity-description').find('p')];
+			var paras = [$('.news-description').find('img')];
 			var i;
 			$(inputs).click(function(){
 			for(i in paras) {

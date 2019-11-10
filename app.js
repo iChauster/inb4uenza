@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var parse = require('csv-parse');
 var fs = require('fs');
 var Strain = require('./models/strain')
 
@@ -52,7 +51,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(1008);
-
+/*
 function addStrain(strainName, country, type, pathToFile) {
 	var pathName = pathToFile;
 	var strain;
@@ -109,7 +108,7 @@ function getRecent(strain, strainType){
 
 
 
-
+*/
 
 
 

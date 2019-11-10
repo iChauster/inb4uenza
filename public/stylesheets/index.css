@@ -218,6 +218,7 @@ height:15px;
   margin: 10px 10px 10px -10px;
   padding: 20px;
   overflow: hidden;
+  display: flex;
 }
 
 .colorbar {
@@ -268,9 +269,15 @@ height:15px;
   width: 51%;
 }
 
+.description-flex-container img {
+  height: 350px;
+}
 
 
-
+.description {
+  width: 40%;
+  margin:10px -5px 10px 10px;
+}
 
 
 
