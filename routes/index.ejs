@@ -13,7 +13,7 @@
 		      <div class="dropdown-container">
 		        <a href="H3N2_1995-2009">Substrain 1</a>
 		        <a href="#">Substrain 2</a>
-		        <a href="#">Substrain 3</a>
+		        <a href="H3N2_2014-2014">Substrain 3</a>
 		      </div>
 
 		      <button class="dropdown-btn">Strain 2
@@ -74,7 +74,7 @@
     		console.log(pi)
 
 			var sequence = "<%= sequence %>";
-			console.log(sequence)
+
 			var ddata = [];
 
 			for (var i=1;i<100;i++) {
@@ -87,10 +87,7 @@
 
 			var mutationIntervalsH =  [];
 			var probabilityIntervals = pi;
-
-			console
 			
-
 
 			for (var i = 0; i < probabilityIntervals.length; i++){
 				mutationIntervalsH.push({
@@ -98,8 +95,6 @@
 			        y: probabilityIntervals[i][1]
 			    })
 			}
-
-			console.log(mutationIntervalsH[0][0]);
 
 			 var mutationIntervalsN =  [];
 
@@ -160,7 +155,7 @@
 			var b = <%= viewpd %>;
 
 			if(b){
-				var pft = new FeatureViewer('MALWMRLLPLLALLALWGPGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLE',
+				var pft = new FeatureViewer(sequence,
 	               '#fv2',
 	                {
 	                    showAxis: true,
@@ -172,7 +167,7 @@
 	                });
 
 				pft.addFeature({
-			    data: ddata,
+			    data: probabilityIntervals,
 			    name: "Frequency Distibution",
 			    className: "test6", //can be used for styling
 			    color: "#0F8292",})
