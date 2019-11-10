@@ -209,10 +209,9 @@ height:15px;
 
 
 #news {
-  float: left;
-  width: 40%;
-  margin-right: 10px;
-  height: 53%;
+  width: 100%;
+  margin: 10px;
+  height: 46%;
 }
 
 .info {
@@ -252,12 +251,12 @@ height:15px;
   color: black;
 }
 
-.read-more: hover {
+.read-more:hover {
   position: absolute;
   bottom: 15px;
   right: 20px;
   text-decoration: overline underline #fcc22d;
-  color: black;
+  color: #fcc22d;
 }
 
 .similarity {
@@ -386,17 +385,10 @@ height:15px;
 }
 
 
-.description-flex-container p {
+.description-flex-container img {
   display: none;
 }
-.description-flex-container p.activet {
-  display: block;
-}
-
-.description-flex-container-second p {
-  display: none;
-}
-.description-flex-container-second p.activet {
+.description-flex-container img.activet {
   display: block;
 }
 
