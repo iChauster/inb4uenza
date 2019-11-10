@@ -129,63 +129,72 @@
 		
 		<script>
 
-			var pi = [];
-    		<% for (var i = 0; i < probabilityIntervals.length; i++) { %>
-    			pi.push([<%= probabilityIntervals[i] %>])
+			var piH = [];
+    		<% for (var i = 0; i < probabilityIntervalsH.length; i++) { %>
+    			piH.push([<%= probabilityIntervalsH[i] %>])
     		<%}%>
-    		console.log(pi)
 
-			var sequence = "<%= sequence %>";
-			console.log(sequence)
-			var ddata = [];
+    		var piN = [];
+    		<% for (var i = 0; i < probabilityIntervalsN.length; i++) { %>
+    			piN.push([<%= probabilityIntervalsN[i] %>])
+    		<%}%>
 
-			for (var i=1;i<100;i++) {
-			    var count = Math.floor((Math.random() * 20) + 1);
-		        ddata.push({
-		            x: i*2,
-		            y:count
-		        })
-			}
+
+			var sequenceH = "<%= sequenceH %>";
+
+			var sequenceN = "<%= sequenceN %>";
+
+			// var ddata = [];
+
+			// for (var i=1;i<100;i++) {
+			//     var count = Math.floor((Math.random() * 20) + 1);
+		 //        ddata.push({
+		 //            x: i*2,
+		 //            y:count
+		 //        })
+			// }
 
 			var mutationIntervalsH =  [];
-			var probabilityIntervals = pi;
+
+			var probabilityIntervalsH = piH;
+			var probabilityIntervalsN = piN;
 			var piFormatH = [];
 			var piFormatN = [];
 
-			for (var i = 0; i < probabilityIntervals.length; i++){
+			for (var i = 0; i < probabilityIntervalsH.length; i++){
 				mutationIntervalsH.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
+			        x: probabilityIntervalsH[i][0],
+			        y: probabilityIntervalsH[i][1]
 			    })
 			}
 
 			 var mutationIntervalsN =  [];
 
-			for (var i = 0; i < probabilityIntervals.length; i++){
+			for (var i = 0; i < probabilityIntervalsN.length; i++){
 				mutationIntervalsN.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
+			        x: probabilityIntervalsN[i][0],
+			        y: probabilityIntervalsN[i][1]
 			    })
 			}
   			
-  			for (var i = 0; i < probabilityIntervals.length; i++){
+  			for (var i = 0; i < probabilityIntervalsH.length; i++){
 				piFormatH.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
+			        x: probabilityIntervalsH[i][0],
+			        y: probabilityIntervalsH[i][1]
 			    })
 			}
 
-			for (var i = 0; i < probabilityIntervals.length; i++){
+			for (var i = 0; i < probabilityIntervalsN.length; i++){
 				piFormatN.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
+			        x: probabilityIntervalsN[i][0],
+			        y: probabilityIntervalsN[i][1]
 			    })
 			}
 
   			var b = <%= viewpd %>;
 
   			if (b) {
-				var pftH = new FeatureViewer(sequence,
+				var pftH = new FeatureViewer(sequenceH,
 	               '#fv2',
 	                {
 	                    showAxis: true,
@@ -207,7 +216,7 @@
 				    filter: "type2"
 				});
 
-				var pftN = new FeatureViewer(sequence,
+				var pftN = new FeatureViewer(sequenceN,
 	               '#fv2',
 	                {
 	                    showAxis: true,
@@ -229,7 +238,7 @@
 			
             } else {
 
-				var ftH = new FeatureViewer(sequence,
+				var ftH = new FeatureViewer(sequenceH,
 	               '#fvH',
 	                {
 	                    showAxis: true,
@@ -250,7 +259,7 @@
 				});
 
 
-				var ftN = new FeatureViewer(sequence,
+				var ftN = new FeatureViewer(sequenceN,
 	               '#fvN',
 	                {
 	                    showAxis: true,
