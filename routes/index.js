@@ -23,6 +23,7 @@ router.get('/:strain', function(req, res, next) {
 		documents.forEach((doc) => {
 			avgYearArray = doc.year.split("-")
 			avgYear = (parseInt(avgYearArray[0]) + parseInt(avgYearArray[1])) / 2
+			yearRange.push(avgYear)
 
 			if (doc.year == year){
 				r = true
@@ -37,16 +38,21 @@ router.get('/:strain', function(req, res, next) {
 		if (!r){
 			console.log('nothin')
 		}else{
-			last = (resultH.last || resultN.last) ? true : false
-			res.render("index", {sequenceN : resultN.seq,
-				sequenceH : resultH.seq, 
-				viewpd: last, 
-				news: resultN.news, 
-				probabilityIntervalsN: resultN.probabilityIntervals,
-				probabilityIntervalsH: resultH.probabilityIntervals,
-				strain: resultN.strain,
-				year: resultN.year,
-				yearRange: yearRange})
+			var sendObject = {}
+			if (resultH){
+				var lastH = (resultH.last) ? true : false
+				sendObject["lastH"] = lastH
+				sendObject["sequenceH"] = resultH.seq
+				sendObject["probabilityIntervalsH"] = resultH.probabilityIntervalsH
+			}
+			if (resultN){
+				var lastN = (resultN.last) ? true : false
+				sendObject["lastN"] = lastN
+				sendObject["sequenceN"] = resultN.seq
+				sendObject["probabilityIntervalsN"] = resultN.probabilityIntervalsN
+			}
+			sendObject["yearRange"] = yearRange
+			res.render("index", sendObject)
 		}
 	})
 });
