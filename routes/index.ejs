@@ -135,6 +135,9 @@
     		<%}%>
     		console.log(pi)
 
+			var sequence = "<%= sequence %>";
+			console.log(sequence)
+			var ddata = [];
 
 			for (var i=1;i<100;i++) {
 			    var count = Math.floor((Math.random() * 20) + 1);
@@ -172,60 +175,6 @@
 			    })
 			}
 
-<<<<<<< HEAD
-			ft.addFeature({
-			    data:dataDemo,
-			    name: "test feature 1",
-			    className: "test5", //can be used for styling
-			    color: "#fcc22d",
-			    type: "line" // ['rect', 'path', 'line']
-			})
-			var ftH = new FeatureViewer(sequence,
-               '#fvH',
-                {
-                    showAxis: true,
-                    showSequence: true,
-                    brushActive: true, //zoom
-                    toolbar:true, //current zoom & mouse position
-                    bubbleHelp:true, 
-                    zoomMax:50 //define the maximum range of the zoom
-                });
-
-			ftH.addFeature({
-			    data: mutationIntervalsH,
-				name: "Hemagglutinin",
-				className: "test1",
-				color: "#005572",
-				type: "rect",
-   				filter: "type1"
-			});
-
-
-			var ftN = new FeatureViewer(sequence,
-               '#fvN',
-                {
-                    showAxis: true,
-                    showSequence: true,
-                    brushActive: true, //zoom
-                    toolbar:true, //current zoom & mouse position
-                    bubbleHelp:true, 
-                    zoomMax:50 //define the maximum range of the zoom
-                });
-
-			ftN.addFeature({
-			    data: mutationIntervalsN,
-				name: "Neuraminidase",
-				className: "test1",
-				color: "#005572",
-				type: "rect",
-				filter: "type1"
-			});
-                            
-			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
-			//var ft = new FeatureViewer(213,'#fv1');
-
-			// data should be dependent on the particular strain they send and should pull from db accordingly 
-			// Combination of H and N, 2:1 ratio in terms of weighting
 			for (var i = 0; i < probabilityIntervals.length; i++){
 				piFormatN.push({
 			        x: probabilityIntervals[i][0],
@@ -268,8 +217,6 @@
 	                    bubbleHelp:true, 
 	                    zoomMax:50 //define the maximum range of the zoom
 	                });
-				console.log("HELLO")
-				console.log(piFormatN);
 
 				pftN.addFeature({
 				    data: piFormatN,
@@ -325,18 +272,6 @@
 
 			}
                             
-			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
-			//var ft = new FeatureViewer(213,'#fv1');
-
-			// data should be dependent on the particular strain they send and should pull from db accordingly 
-			// Combination of H and N, 2:1 ratio in terms of weighting
-
-           
-			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
-			//var ft = new FeatureViewer(213,'#fv1');
-
-			
-
 		</script>
 
 		<script>
@@ -379,4 +314,3 @@
 		</script>
 
 </html>
-

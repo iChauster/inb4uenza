@@ -15,7 +15,6 @@ router.get('/:strain', function(req, res, next) {
 	var year = split[1]
 
 	yearRange = []
-	console.log(strain)
 	Strain.find({strain: strain}, function(err, documents){
 		var r = false
 		var result;
@@ -40,20 +39,7 @@ router.get('/:strain', function(req, res, next) {
 				year: result.year,
 				yearRange: yearRange})
 		}
-<<<<<<< HEAD
 	})
-	
-=======
-		last = (result.last) ? result.last : false
-		console.log(last)
-		res.render("index", {sequence: result.seq, 
-			viewpd: last, 
-			news: result.news, 
-			probabilityIntervals: result.probabilityIntervals,
-			strain: result.strain,
-			year: result.year})
-	}).catch(err => {console.log(err)})
->>>>>>> 18224f5d679d8e62fabdb2b19d5fa9843e469e96
 });
 
 module.exports = router;
