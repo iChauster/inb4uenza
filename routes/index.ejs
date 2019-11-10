@@ -135,9 +135,6 @@
     		<%}%>
     		console.log(pi)
 
-			var sequence = "<%= sequence %>";
-			console.log(sequence)
-			var ddata = [];
 
 			for (var i=1;i<100;i++) {
 			    var count = Math.floor((Math.random() * 20) + 1);
@@ -174,7 +171,7 @@
 			    className: "test5", //can be used for styling
 			    color: "#fcc22d",
 			    type: "line" // ['rect', 'path', 'line']
-
+			})
 			var ftH = new FeatureViewer(sequence,
                '#fvH',
                 {

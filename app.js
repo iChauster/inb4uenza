@@ -94,6 +94,26 @@ function addStrain(strainName, pathToFile) {
 	    })
 }
 
+function getSeverity(strain){
+	var maxH = 3
+	var maxN = 7
+
+	for (var h = 1; h <= maxH; h ++){
+		
+	}
+
+}
+function getRecent(strain, strainType){
+	Strain.findOne({strain: strain, last: true, strainType: strainType}).then(result => {
+		var array = result.probabilityIntervals;
+		array.sort(function(a,b){
+			return b[1] - a[1]
+		});
+		return array.slice(0,3)
+	}).catch(err => {console.log(err)})
+}
+
+getRecent("H3N2");
 //addStrain("H3N2", "H3N2_4_China")
 
 module.exports = app;
