@@ -43,13 +43,13 @@ router.get('/:strain', function(req, res, next) {
 				var lastH = (resultH.last) ? true : false
 				sendObject["lastH"] = lastH
 				sendObject["sequenceH"] = resultH.seq
-				sendObject["probabilityIntervalsH"] = resultH.probabilityIntervalsH
+				sendObject["probabilityIntervalsH"] = resultH.probabilityIntervals
 			}
 			if (resultN){
 				var lastN = (resultN.last) ? true : false
 				sendObject["lastN"] = lastN
 				sendObject["sequenceN"] = resultN.seq
-				sendObject["probabilityIntervalsN"] = resultN.probabilityIntervalsN
+				sendObject["probabilityIntervalsN"] = resultN.probabilityIntervals
 			}
 			sendObject["yearRange"] = yearRange
 			console.log(sendObject);
