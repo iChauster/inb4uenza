@@ -52,6 +52,7 @@ router.get('/:strain', function(req, res, next) {
 				sendObject["probabilityIntervalsN"] = resultN.probabilityIntervalsN
 			}
 			sendObject["yearRange"] = yearRange
+			console.log(sendObject);
 			res.render("index", sendObject)
 		}
 	})

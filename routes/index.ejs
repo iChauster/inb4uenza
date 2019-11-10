@@ -130,20 +130,30 @@
 		<script>
 
 			var piH = [];
+			var piN = [];
+			var sequenceH = "";
+			var sequenceN = "";
+			var h  = false;
+  			var n = false;
+
+  			var f = <%= probabilityIntervalsH %>
 			
-    		<% for (var i = 0; i < probabilityIntervalsH.length; i++) { %>
-    			piH.push([<%= probabilityIntervalsH[i] %>])
-    		<%}%>
+  			<% if (probabilityIntervalsH != null){ %>
+	    		<% for (var i = 0; i < probabilityIntervalsH.length; i++) { %>
+	    			piH.push([<%= probabilityIntervalsH[i] %>])
+	    		<%} %>
+	    		sequenceH = "<%= sequenceH %>";
+	    		h = <%= lastH %>;
+	    	<%}%>
 
-    		var piN = [];
-    		<% for (var i = 0; i < probabilityIntervalsN.length; i++) { %>
-    			piN.push([<%= probabilityIntervalsN[i] %>])
-    		<%}%>
+    		<% if (locals.probabilityIntervalsN){ %>
+	    		<% for (var i = 0; i < probabilityIntervalsN.length; i++) { %>
+	    			piH.push([<%= probabilityIntervalsN[i] %>])
+	    		<%} %>
+	    		 sequenceN = "<%= sequenceN %>";
+	    		 n = <%= lastN %>;
+	    	<%}%>
 
-
-			var sequenceH = "<%= sequenceH %>";
-
-			var sequenceN = "<%= sequenceN %>";
 
 			// var ddata = [];
 
@@ -191,9 +201,6 @@
 			        y: probabilityIntervalsN[i][1]
 			    })
 			}
-
-  			var h = <%= lastH %>;
-  			var n = <%= lastN %>;
 
   			if (h) {
 				var pftH = new FeatureViewer(sequenceH,
