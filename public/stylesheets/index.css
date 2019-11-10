@@ -158,6 +158,11 @@ body {
   overflow: scroll;
 }
 
+.news {
+  margin: 0px 30px 30px 30px;
+  width: 28%;
+}
+
 #news {
   float: left;
   width: 40%;
@@ -181,10 +186,23 @@ body {
   margin-bottom: 20px
 }
 
+.real-news {
+  display: flex;
+}
+
+.publications {
+  display: flex;
+}
+
+.maps {
+  display: flex;
+}
+
+
 .read-more {
   position: relative;
   bottom: 0px;
-  text-decoration: underline blue;
+  text-decoration: underline #fcc22d;
 }
 
 .similarity {
