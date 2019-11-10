@@ -7,31 +7,31 @@
 		<div class="splitl left">
 		    <div class="sidenav">
 		      <h2>Influenza A Strains</h2>
-		      <button class="dropdown-btn">Strain 1
+		      <button class="dropdown-btn">H1
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href="H3N2_1995-2009">Substrain 1</a>
-		        <a href="#">Substrain 2</a>
-		        <a href="H3N2_2014-2014">Substrain 3</a>
+		        <a href="H1N1_1995-2009">N1</a>
+		        <a href="#">N2</a>
+		        <a href="#">N3</a>
 		      </div>
 
-		      <button class="dropdown-btn">Strain 2
+		      <button class="dropdown-btn">H2
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href="#">Link 1</a>
-		        <a href="#">Link 2</a>
-		        <a href="#">Link 3</a>
+		        <a href="#">N1</a>
+		        <a href="#">N2</a>
+		        <a href="#">N3</a>
 		      </div>
 
-		      <button class="dropdown-btn">Strain 3
+		      <button class="dropdown-btn">H3
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href="#">Link 1</a>
-		        <a href="#">Link 2</a>
-		        <a href="#">Link 3</a>
+		        <a href="#">N1</a>
+		        <a href="#">N2</a>
+		        <a href="#">N3</a>
 		      </div>
 		    </div>
 		</div>
@@ -117,7 +117,7 @@
 							<span data-year="1990"></span>
 						</div>
 						<div class="input">
-							<span data-year="2000"></span>
+							<a href="H3N2_2014-2014"><span data-year="2000"></span></a>
 						</div>
 					</div>
 				</div>
@@ -136,7 +136,7 @@
     		console.log(pi)
 
 			var sequence = "<%= sequence %>";
-
+			console.log(sequence)
 			var ddata = [];
 
 			for (var i=1;i<100;i++) {
@@ -149,7 +149,8 @@
 
 			var mutationIntervalsH =  [];
 			var probabilityIntervals = pi;
-			
+			var piFormatH = [];
+			var piFormatN = [];
 
 			for (var i = 0; i < probabilityIntervals.length; i++){
 				mutationIntervalsH.push({
@@ -166,65 +167,25 @@
 			        y: probabilityIntervals[i][1]
 			    })
 			}
+  			
+  			for (var i = 0; i < probabilityIntervals.length; i++){
+				piFormatH.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			}
 
-			ft.addFeature({
-			    data:dataDemo,
-			    name: "test feature 1",
-			    className: "test5", //can be used for styling
-			    color: "#fcc22d",
-			    type: "line" // ['rect', 'path', 'line']
+			for (var i = 0; i < probabilityIntervals.length; i++){
+				piFormatN.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			}
 
-			var ftH = new FeatureViewer(sequence,
-               '#fvH',
-                {
-                    showAxis: true,
-                    showSequence: true,
-                    brushActive: true, //zoom
-                    toolbar:true, //current zoom & mouse position
-                    bubbleHelp:true, 
-                    zoomMax:50 //define the maximum range of the zoom
-                });
+  			var b = <%= viewpd %>;
 
-			ftH.addFeature({
-			    data: mutationIntervalsH,
-				name: "Hemagglutinin",
-				className: "test1",
-				color: "#005572",
-				type: "rect",
-   				filter: "type1"
-			});
-
-
-			var ftN = new FeatureViewer(sequence,
-               '#fvN',
-                {
-                    showAxis: true,
-                    showSequence: true,
-                    brushActive: true, //zoom
-                    toolbar:true, //current zoom & mouse position
-                    bubbleHelp:true, 
-                    zoomMax:50 //define the maximum range of the zoom
-                });
-
-			ftN.addFeature({
-			    data: mutationIntervalsN,
-				name: "Neuraminidase",
-				className: "test1",
-				color: "#005572",
-				type: "rect",
-				filter: "type1"
-			});
-                            
-			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
-			//var ft = new FeatureViewer(213,'#fv1');
-
-			// data should be dependent on the particular strain they send and should pull from db accordingly 
-			// Combination of H and N, 2:1 ratio in terms of weighting
-
-			var b = <%= viewpd %>;
-
-			if(b){
-				var pft = new FeatureViewer(sequence,
+  			if (b) {
+				var pftH = new FeatureViewer(sequence,
 	               '#fv2',
 	                {
 	                    showAxis: true,
@@ -234,14 +195,92 @@
 	                    bubbleHelp:true, 
 	                    zoomMax:50 //define the maximum range of the zoom
 	                });
+				console.log("HELLO")
+				console.log(piFormatH);
 
-				pft.addFeature({
-			    data: probabilityIntervals,
-			    name: "Frequency Distibution",
-			    className: "test6", //can be used for styling
-			    color: "#0F8292",})
+				pftH.addFeature({
+				    data: piFormatH,
+				    name: "test feature 5",
+				    className: "test5",
+				    color: "#008B8D",
+				    type: "line",
+				    filter: "type2"
+				});
 
-            }           
+				var pftN = new FeatureViewer(sequence,
+	               '#fv2',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+				console.log("HELLO")
+				console.log(piFormatN);
+
+				pftN.addFeature({
+				    data: piFormatN,
+				    name: "test feature 5",
+				    className: "test5",
+				    color: "#008B8D",
+				    type: "line",
+				    filter: "type2"
+				});
+			
+            } else {
+
+				var ftH = new FeatureViewer(sequence,
+	               '#fvH',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+
+				ftH.addFeature({
+				    data: mutationIntervalsH,
+					name: "Hemagglutinin",
+					className: "test1",
+					color: "#005572",
+					type: "rect",
+	   				filter: "type1"
+				});
+
+
+				var ftN = new FeatureViewer(sequence,
+	               '#fvN',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+
+				ftN.addFeature({
+				    data: mutationIntervalsN,
+					name: "Neuraminidase",
+					className: "test1",
+					color: "#005572",
+					type: "rect",
+					filter: "type1"
+				});
+
+			}
+                            
+			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
+			//var ft = new FeatureViewer(213,'#fv1');
+
+			// data should be dependent on the particular strain they send and should pull from db accordingly 
+			// Combination of H and N, 2:1 ratio in terms of weighting
+
+           
 			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
 			//var ft = new FeatureViewer(213,'#fv1');
 

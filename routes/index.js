@@ -20,6 +20,7 @@ router.get('/:strain', function(req, res, next) {
 			console.log("NO RESULTS FOR " + strain + " " + year)
 		}
 		last = (result.last) ? result.last : false
+		console.log(last)
 		res.render("index", {sequence: result.seq, 
 			viewpd: last, 
 			news: result.news, 
