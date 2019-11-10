@@ -51,7 +51,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(1005);
+app.listen(1008);
 
 function addStrain(strainName, country, type, pathToFile) {
 	var pathName = pathToFile;
@@ -106,6 +106,12 @@ function getRecent(strain, strainType){
 		return array.slice(0,3)
 	}).catch(err => {console.log(err)})
 }
+
+
+
+
+
+
 
 
 module.exports = app;

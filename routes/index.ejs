@@ -11,7 +11,7 @@
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href="H1N1_1995-2009">N1</a>
+		        <a href="H3N2_1995-2009">N1</a>
 		        <a href="#">N2</a>
 		        <a href="#">N3</a>
 		      </div>
@@ -33,18 +33,21 @@
 		        <a href="#">N2</a>
 		        <a href="#">N3</a>
 		      </div>
+<<<<<<< HEAD
 		      <a href= "/about" class = "about-btn">News
 			  </a>
 		      <a href= "/news" class = "about-btn">About
 			  </a>
+=======
+>>>>>>> af1092c9869da2ccc552ed5436cc39d6ccbb8057
 		    </div>
 		</div>
 
 		<div class="splitr right">
+		  	<div id="fvH"></div>
+		  	<div id="fvN"></div>
+		  	<div id="fv2"></div>
 			<div class = "whiteBG">
-				<div id="fvH"></div>
-			  	<div id="fvN"></div>
-			  	<div id="fv2"></div>
 		  		<div id="fv1" class = "graph"></div>
 		  	</div>
 		  	<div class = "info">
@@ -91,10 +94,8 @@
 			</div>
 
 			<div class = "timeline">
-							<div classflex-parent">
+							<div class="flex-parent">
 					<div class="input-flex-container">
-						<%  for (var i = 0; i < yearRange.length; i ++) { %>
-							
 						<div class="input">
 							<span data-year="1910"></span>
 						</div>
@@ -135,63 +136,78 @@
 		
 		<script>
 
-			var pi = [];
-    		<% for (var i = 0; i < probabilityIntervals.length; i++) { %>
-    			pi.push([<%= probabilityIntervals[i] %>])
-    		<%}%>
-    		console.log(pi)
+			var piH = [];
+			var piN = [];
+			var sequenceH = "";
+			var sequenceN = "";
+			var h  = false;
+  			var n = false;
+			
+  			<% if (locals.probabilityIntervalsH){ %>
+	    		<% for (var i = 0; i < probabilityIntervalsH.length; i++) { %>
+	    			piH.push([<%= probabilityIntervalsH[i] %>])
+	    		<%} %>
+	    		sequenceH = "<%= sequenceH %>";
+	    		h = <%= lastH %>;
+	    	<%}%>
 
-			var sequence = "<%= sequence %>";
-			console.log(sequence)
-			var ddata = [];
+    		<% if (locals.probabilityIntervalsN){ %>
+	    		<% for (var i = 0; i < probabilityIntervalsN.length; i++) { %>
+	    			piN.push([<%= probabilityIntervalsN[i] %>])
+	    		<%} %>
+	    		 sequenceN = "<%= sequenceN %>";
+	    		 n = <%= lastN %>;
+	    	<%}%>
 
-			for (var i=1;i<100;i++) {
-			    var count = Math.floor((Math.random() * 20) + 1);
-		        ddata.push({
-		            x: i*2,
-		            y:count
-		        })
-			}
+
+			// var ddata = [];
+
+			// for (var i=1;i<100;i++) {
+			//     var count = Math.floor((Math.random() * 20) + 1);
+		 //        ddata.push({
+		 //            x: i*2,
+		 //            y:count
+		 //        })
+			// }
 
 			var mutationIntervalsH =  [];
-			var probabilityIntervals = pi;
+			var mutationIntervalsN =  [];
+
+			var probabilityIntervalsH = piH;
+			var probabilityIntervalsN = piN;
 			var piFormatH = [];
 			var piFormatN = [];
 
-			for (var i = 0; i < probabilityIntervals.length; i++){
+			for (var i = 0; i < probabilityIntervalsH.length; i++){
 				mutationIntervalsH.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
+			        x: probabilityIntervalsH[i][0],
+			        y: probabilityIntervalsH[i][1]
 			    })
 			}
 
-			 var mutationIntervalsN =  [];
-
-			for (var i = 0; i < probabilityIntervals.length; i++){
+			for (var i = 0; i < probabilityIntervalsN.length; i++){
 				mutationIntervalsN.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
+			        x: probabilityIntervalsN[i][0],
+			        y: probabilityIntervalsN[i][1]
 			    })
 			}
   			
-  			for (var i = 0; i < probabilityIntervals.length; i++){
+  			for (var i = 0; i < probabilityIntervalsH.length; i++){
 				piFormatH.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
+			        x: probabilityIntervalsH[i][0],
+			        y: probabilityIntervalsH[i][1]
 			    })
 			}
 
-			for (var i = 0; i < probabilityIntervals.length; i++){
+			for (var i = 0; i < probabilityIntervalsN.length; i++){
 				piFormatN.push({
-			        x: probabilityIntervals[i][0],
-			        y: probabilityIntervals[i][1]
+			        x: probabilityIntervalsN[i][0],
+			        y: probabilityIntervalsN[i][1]
 			    })
 			}
 
-  			var b = <%= viewpd %>;
-
-  			if (b) {
-				var pftH = new FeatureViewer(sequence,
+  			if (h) {
+				var pftH = new FeatureViewer(sequenceH,
 	               '#fv2',
 	                {
 	                    showAxis: true,
@@ -206,14 +222,15 @@
 
 				pftH.addFeature({
 				    data: piFormatH,
-				    name: "test feature 5",
+				    name: "Hemagglutinin",
 				    className: "test5",
-				    color: "#fcc22d",
+				    color: "#008B8D",
 				    type: "line",
 				    filter: "type2"
 				});
-
-				var pftN = new FeatureViewer(sequence,
+            } 
+            if (n) {
+				var pftN = new FeatureViewer(sequenceN,
 	               '#fv2',
 	                {
 	                    showAxis: true,
@@ -226,16 +243,16 @@
 
 				pftN.addFeature({
 				    data: piFormatN,
-				    name: "test feature 5",
+				    name: "Neuraminidase",
 				    className: "test5",
-				    color: "#fcc22d",
+				    color: "#008B8D",
 				    type: "line",
 				    filter: "type2"
 				});
 			
             } else {
 
-				var ftH = new FeatureViewer(sequence,
+				var ftH = new FeatureViewer(sequenceH,
 	               '#fvH',
 	                {
 	                    showAxis: true,
@@ -250,13 +267,13 @@
 				    data: mutationIntervalsH,
 					name: "Hemagglutinin",
 					className: "test1",
-					color: "#fcc22d",
+					color: "#005572",
 					type: "rect",
 	   				filter: "type1"
 				});
 
 
-				var ftN = new FeatureViewer(sequence,
+				var ftN = new FeatureViewer(sequenceN,
 	               '#fvN',
 	                {
 	                    showAxis: true,
@@ -271,7 +288,7 @@
 				    data: mutationIntervalsN,
 					name: "Neuraminidase",
 					className: "test1",
-					color: "#fcc22d",
+					color: "#005572",
 					type: "rect",
 					filter: "type1"
 				});
