@@ -15,7 +15,7 @@ router.get('/:strain', function(req, res, next) {
 	var year = split[1]
 
 	yearRange = []
-	Strain.find({strain: strain}, function(err, documents){
+	Strain.find({strain: strain, country:"All"}, function(err, documents){
 		var r = false
 		var resultH;
 		var resultN;
@@ -37,21 +37,24 @@ router.get('/:strain', function(req, res, next) {
 		yearRange.sort(function(a,b){
 			return a["average"] - b["average"]
 		});
-		finalRange = []
+
+		if (yearRange[0]){
+			finalRange = [yearRange[0]["average"]]
+		}
 		hrefs = []
 		for (var i = 1; i < yearRange.length; i ++){
-			if(yearRange[i]["average"] - yearRange[i - 1]["average"] >= 2){
+			if(yearRange[i]["average"] - finalRange[finalRange.length-1] >= 2){
 				var item = yearRange[i]
 				finalRange.push(item["average"])
 				hrefs.push("/" + item["strain"] + "_" + item["year"])
 			}
 		}
-
 		if (finalRange.length > 10){
-			finalRange.slice(-10)
-			hrefs.slice(-10)
+			finalRange = finalRange.slice(-10)
+			hrefs = hrefs.slice(-10)
 		}
-
+		console.log(finalRange)
+		console.log(hrefs)
 		if (!r){
 			console.log('nothin')
 		}else{
