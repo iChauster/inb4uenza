@@ -53,7 +53,7 @@ app.use(function(err, req, res, next) {
 
 app.listen(1005);
 
-function addStrain(strainName, pathToFile) {
+function addStrain(strainName, country, type, pathToFile) {
 	var pathName = pathToFile;
 	var strain;
 	var documentsToSave = []
@@ -73,6 +73,9 @@ function addStrain(strainName, pathToFile) {
 	        strain.strain = strainName
 	        strain.year = yearRange
 	        strain.seq = sequence
+	        strain.country = country
+	        strain.last = false
+	        strain.strainType = type
 	        strain.probabilityIntervals = probIntervals
 
 	        documentsToSave.push(strain)
@@ -94,15 +97,6 @@ function addStrain(strainName, pathToFile) {
 	    })
 }
 
-function getSeverity(strain){
-	var maxH = 3
-	var maxN = 7
-
-	for (var h = 1; h <= maxH; h ++){
-		
-	}
-
-}
 function getRecent(strain, strainType){
 	Strain.findOne({strain: strain, last: true, strainType: strainType}).then(result => {
 		var array = result.probabilityIntervals;
@@ -113,7 +107,6 @@ function getRecent(strain, strainType){
 	}).catch(err => {console.log(err)})
 }
 
-getRecent("H3N2");
-//addStrain("H3N2", "H3N2_4_China")
+
 
 module.exports = app;

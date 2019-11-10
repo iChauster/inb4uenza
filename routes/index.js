@@ -17,13 +17,18 @@ router.get('/:strain', function(req, res, next) {
 	yearRange = []
 	Strain.find({strain: strain}, function(err, documents){
 		var r = false
-		var result;
+		var resultH;
+		var resultN;
 		console.log("FOUND " + documents.length)
 		documents.forEach((doc) => {
-			yearRange.push(doc.year)
+			avgYearArray = doc.year.split("-")
 			if (doc.year == year){
 				r = true
-				result = doc
+				if (doc.strainType == "H"){
+					resultH = doc
+				}else{
+					resultN = doc
+				}
 			}
 		});
 
@@ -31,10 +36,12 @@ router.get('/:strain', function(req, res, next) {
 			console.log('nothin')
 		}else{
 			last = (result.last) ? result.last : false
-			res.render("index", {sequence: result.seq, 
+			res.render("index", {sequenceN : resultN.seq,
+				sequenceH : resultH.seq, 
 				viewpd: last, 
 				news: result.news, 
-				probabilityIntervals: result.probabilityIntervals,
+				probabilityIntervalsN: resultN.probabilityIntervals,
+				probabilityIntervalsH: resultH.probabilityIntervals,
 				strain: result.strain,
 				year: result.year,
 				yearRange: yearRange})
