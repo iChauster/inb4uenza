@@ -11,7 +11,7 @@
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href="H1N1_1995-2009">N1</a>
+		        <a href="H3N2_1995-2009">N1</a>
 		        <a href="#">N2</a>
 		        <a href="#">N3</a>
 		      </div>
@@ -33,16 +33,14 @@
 		        <a href="#">N2</a>
 		        <a href="#">N3</a>
 		      </div>
-		      <a href= "/" class = "about-btn">About
-			  </a>
 		    </div>
 		</div>
 
 		<div class="splitr right">
+		  	<div id="fvH"></div>
+		  	<div id="fvN"></div>
+		  	<div id="fv2"></div>
 			<div class = "whiteBG">
-				<div id="fvH"></div>
-			  	<div id="fvN"></div>
-			  	<div id="fv2"></div>
 		  		<div id="fv1" class = "graph"></div>
 		  	</div>
 		  	<div class = "info">
@@ -89,7 +87,7 @@
 			</div>
 
 			<div class = "timeline">
-							<div classflex-parent">
+							<div class="flex-parent">
 					<div class="input-flex-container">
 						<div class="input">
 							<span data-year="1910"></span>
@@ -132,6 +130,7 @@
 		<script>
 
 			var piH = [];
+			
     		<% for (var i = 0; i < probabilityIntervalsH.length; i++) { %>
     			piH.push([<%= probabilityIntervalsH[i] %>])
     		<%}%>
@@ -193,9 +192,10 @@
 			    })
 			}
 
-  			var b = <%= viewpd %>;
+  			var h = <%= lastH %>;
+  			var n = <%= lastN %>;
 
-  			if (b) {
+  			if (h) {
 				var pftH = new FeatureViewer(sequenceH,
 	               '#fv2',
 	                {
@@ -211,13 +211,14 @@
 
 				pftH.addFeature({
 				    data: piFormatH,
-				    name: "test feature 5",
+				    name: "Hemagglutinin",
 				    className: "test5",
-				    color: "#fcc22d",
+				    color: "#008B8D",
 				    type: "line",
 				    filter: "type2"
 				});
-
+            } 
+            if (n) {
 				var pftN = new FeatureViewer(sequenceN,
 	               '#fv2',
 	                {
@@ -231,9 +232,9 @@
 
 				pftN.addFeature({
 				    data: piFormatN,
-				    name: "test feature 5",
+				    name: "Neuraminidase",
 				    className: "test5",
-				    color: "#fcc22d",
+				    color: "#008B8D",
 				    type: "line",
 				    filter: "type2"
 				});
@@ -255,7 +256,7 @@
 				    data: mutationIntervalsH,
 					name: "Hemagglutinin",
 					className: "test1",
-					color: "#fcc22d",
+					color: "#005572",
 					type: "rect",
 	   				filter: "type1"
 				});
@@ -276,7 +277,7 @@
 				    data: mutationIntervalsN,
 					name: "Neuraminidase",
 					className: "test1",
-					color: "#fcc22d",
+					color: "#005572",
 					type: "rect",
 					filter: "type1"
 				});
