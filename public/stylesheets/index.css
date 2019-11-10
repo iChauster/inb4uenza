@@ -113,6 +113,21 @@ body {
   left: 15px;
 }
 
+
+.news-btn {
+  padding: 6px 8px 6px 16px;
+  border: none;
+  text-decoration: none
+  font-size: 50px;
+  color: #818181;
+  display: block;
+  background: none;
+  width:80%;
+  text-align: left;
+  cursor: pointer;
+  left: 15px;
+}
+
 /* Main content */
 .main {
   margin-left: 200px; /* Same as the width of the sidenav */
@@ -160,8 +175,38 @@ body {
 
 .news {
   margin: 0px 30px 30px 30px;
-  width: 28%;
+  width: 30%;
+  position: relative;
 }
+
+.news-map {
+  margin: 0px 30px 30px 30px;
+  width: 50%;
+  position: relative;
+}
+
+.news img {
+  object-fit: cover;
+  height: 200px;
+  margin-left: -20px;
+}
+
+.news-title{
+  margin: 10px 0px 10px 30px;
+}
+
+.news-container{
+  padding-top: 25px;
+}
+
+.news-map img{
+  width: 400px;
+}
+
+.spacer {
+height:15px;
+}
+
 
 #news {
   float: left;
@@ -200,9 +245,19 @@ body {
 
 
 .read-more {
-  position: relative;
-  bottom: 0px;
-  text-decoration: underline #fcc22d;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  text-decoration: overline underline #fcc22d;
+  color: black;
+}
+
+.read-more: hover {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  text-decoration: overline underline #fcc22d;
+  color: black;
 }
 
 .similarity {
