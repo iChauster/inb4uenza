@@ -35,6 +35,11 @@
   background-color: #f5f5ff;
 }
 
+.right-abt {
+  right: 0;
+  background-color: white;
+}
+
 /* Control the body */
 body {
   background-color: #dadae6;
@@ -88,8 +93,24 @@ body {
 }
 
 /* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
+.sidenav a:hover, .dropdown-btn:hover, .about-btn:hover {
   color: #f1f1f1;
+}
+
+.about-btn {
+  padding: 6px 8px 6px 16px;
+  border: none;
+  text-decoration: none
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  background: none;
+  width:80%;
+  text-align: left;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
 }
 
 /* Main content */
@@ -101,7 +122,7 @@ body {
 
 /* Add an active class to the active dropdown button */
 .active {
-  background-color: #fcc203;
+  background-color: #fcc22d;
   color: black;
 }
 
@@ -126,7 +147,7 @@ body {
 .whiteBG {
   margin: -10px;
   margin-top: -30px;
-  padding: 20px;
+  padding: 40px 20px 20px 35px ;
   background-color: white;
 }
 
@@ -135,6 +156,11 @@ body {
   background-color: white;
   padding: 0px 15px 15px 15px;
   overflow: scroll;
+}
+
+.news {
+  margin: 0px 30px 30px 30px;
+  width: 28%;
 }
 
 #news {
@@ -153,17 +179,30 @@ body {
 .colorbar {
   margin: 0px -20px 0px -20px;
   height: 6px;
-  background-color: blue;
+  background-color: black;
 }
 
 .card-title {
   margin-bottom: 20px
 }
 
+.real-news {
+  display: flex;
+}
+
+.publications {
+  display: flex;
+}
+
+.maps {
+  display: flex;
+}
+
+
 .read-more {
   position: relative;
   bottom: 0px;
-  text-decoration: underline blue;
+  text-decoration: underline #fcc22d;
 }
 
 .similarity {
@@ -179,6 +218,167 @@ body {
 
 
 
+
+
+
+
+.timeline {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  color: #424949;
+  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.flex-parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.input-flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80vw;
+  height: 100px;
+  max-width: 1000px;
+  position: relative;
+  z-index: 0;
+}
+
+.input {
+  width: 15px;
+  height: 15px;
+  background-color: #fcc22d;
+  position: relative;
+  border-radius: 50%;
+}
+.input:hover {
+  cursor: pointer;
+}
+.input::before, .input::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fcc22d;
+  width: 4vw;
+  height: 5px;
+  max-width: 50px;
+}
+.input::before {
+  left: calc(-4vw + 12.5px);
+}
+.input::after {
+  right: calc(-4vw + 12.5px);
+}
+.input.activet {
+  background-color: #fcc22d;
+}
+.input.activet::before {
+  background-color: #fcc22d;
+}
+.input.activet::after {
+  background-color: #AEB6BF;
+}
+.input.activet span {
+  font-weight: 700;
+}
+.input.activet span::before {
+  font-size: 13px;
+}
+.input.activet span::after {
+  font-size: 15px;
+}
+.input.activet ~ .input, .input.activet ~ .input::before, .input.activet ~ .input::after {
+  background-color: #AEB6BF;
+}
+.input span {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+.input span::before, .input span::after {
+  visibility: visible;
+  position: absolute;
+  left: 50%;
+}
+.input span::after {
+  content: attr(data-year);
+  top: 25px;
+  transform: translateX(-50%);
+  font-size: 14px;
+}
+.input span::before {
+  content: attr(data-info);
+  top: -65px;
+  width: 70px;
+  transform: translateX(-5px) rotateZ(-45deg);
+  font-size: 12px;
+  text-indent: -10px;
+}
+
+
+.description-flex-container p {
+  display: none;
+}
+.description-flex-container p.activet {
+  display: block;
+}
+
+.description-flex-container-second p {
+  display: none;
+}
+.description-flex-container-second p.activet {
+  display: block;
+}
+
+@media (min-width: 1250px) {
+  .input::before {
+    left: -48px;
+  }
+
+  .input::after {
+    right: -48px;
+  }
+}
+
+.first-abt {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 30px 0px 30px;
+}
+
+.second-abt {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px 0px 30px;
+}
+
+.second-abt img {
+  object-fit: cover;
+  width: 350px;
+  height: 400px;
+}
+
+.third-abt {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px 30px 30px;
+  margin-top: -15px;
+}
 
 
 

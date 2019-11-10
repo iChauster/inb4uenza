@@ -11,7 +11,7 @@
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href="H3N2_1995-2009">N1</a>
+		        <a href="H1N1_1995-2009">N1</a>
 		        <a href="#">N2</a>
 		        <a href="#">N3</a>
 		      </div>
@@ -33,13 +33,6 @@
 		        <a href="#">N2</a>
 		        <a href="#">N3</a>
 		      </div>
-<<<<<<< HEAD
-		      <a href= "/about" class = "about-btn">News
-			  </a>
-		      <a href= "/news" class = "about-btn">About
-			  </a>
-=======
->>>>>>> af1092c9869da2ccc552ed5436cc39d6ccbb8057
 		    </div>
 		</div>
 
@@ -136,78 +129,63 @@
 		
 		<script>
 
-			var piH = [];
-			var piN = [];
-			var sequenceH = "";
-			var sequenceN = "";
-			var h  = false;
-  			var n = false;
-			
-  			<% if (locals.probabilityIntervalsH){ %>
-	    		<% for (var i = 0; i < probabilityIntervalsH.length; i++) { %>
-	    			piH.push([<%= probabilityIntervalsH[i] %>])
-	    		<%} %>
-	    		sequenceH = "<%= sequenceH %>";
-	    		h = <%= lastH %>;
-	    	<%}%>
+			var pi = [];
+    		<% for (var i = 0; i < probabilityIntervals.length; i++) { %>
+    			pi.push([<%= probabilityIntervals[i] %>])
+    		<%}%>
+    		console.log(pi)
 
-    		<% if (locals.probabilityIntervalsN){ %>
-	    		<% for (var i = 0; i < probabilityIntervalsN.length; i++) { %>
-	    			piN.push([<%= probabilityIntervalsN[i] %>])
-	    		<%} %>
-	    		 sequenceN = "<%= sequenceN %>";
-	    		 n = <%= lastN %>;
-	    	<%}%>
+			var sequence = "<%= sequence %>";
+			console.log(sequence)
+			var ddata = [];
 
-
-			// var ddata = [];
-
-			// for (var i=1;i<100;i++) {
-			//     var count = Math.floor((Math.random() * 20) + 1);
-		 //        ddata.push({
-		 //            x: i*2,
-		 //            y:count
-		 //        })
-			// }
+			for (var i=1;i<100;i++) {
+			    var count = Math.floor((Math.random() * 20) + 1);
+		        ddata.push({
+		            x: i*2,
+		            y:count
+		        })
+			}
 
 			var mutationIntervalsH =  [];
-			var mutationIntervalsN =  [];
-
-			var probabilityIntervalsH = piH;
-			var probabilityIntervalsN = piN;
+			var probabilityIntervals = pi;
 			var piFormatH = [];
 			var piFormatN = [];
 
-			for (var i = 0; i < probabilityIntervalsH.length; i++){
+			for (var i = 0; i < probabilityIntervals.length; i++){
 				mutationIntervalsH.push({
-			        x: probabilityIntervalsH[i][0],
-			        y: probabilityIntervalsH[i][1]
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
 			    })
 			}
 
-			for (var i = 0; i < probabilityIntervalsN.length; i++){
+			 var mutationIntervalsN =  [];
+
+			for (var i = 0; i < probabilityIntervals.length; i++){
 				mutationIntervalsN.push({
-			        x: probabilityIntervalsN[i][0],
-			        y: probabilityIntervalsN[i][1]
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
 			    })
 			}
   			
-  			for (var i = 0; i < probabilityIntervalsH.length; i++){
+  			for (var i = 0; i < probabilityIntervals.length; i++){
 				piFormatH.push({
-			        x: probabilityIntervalsH[i][0],
-			        y: probabilityIntervalsH[i][1]
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
 			    })
 			}
 
-			for (var i = 0; i < probabilityIntervalsN.length; i++){
+			for (var i = 0; i < probabilityIntervals.length; i++){
 				piFormatN.push({
-			        x: probabilityIntervalsN[i][0],
-			        y: probabilityIntervalsN[i][1]
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
 			    })
 			}
 
-  			if (h) {
-				var pftH = new FeatureViewer(sequenceH,
+  			var b = <%= viewpd %>;
+
+  			if (b) {
+				var pftH = new FeatureViewer(sequence,
 	               '#fv2',
 	                {
 	                    showAxis: true,
@@ -222,15 +200,14 @@
 
 				pftH.addFeature({
 				    data: piFormatH,
-				    name: "Hemagglutinin",
+				    name: "test feature 5",
 				    className: "test5",
 				    color: "#008B8D",
 				    type: "line",
 				    filter: "type2"
 				});
-            } 
-            if (n) {
-				var pftN = new FeatureViewer(sequenceN,
+
+				var pftN = new FeatureViewer(sequence,
 	               '#fv2',
 	                {
 	                    showAxis: true,
@@ -240,10 +217,12 @@
 	                    bubbleHelp:true, 
 	                    zoomMax:50 //define the maximum range of the zoom
 	                });
+				console.log("HELLO")
+				console.log(piFormatN);
 
 				pftN.addFeature({
 				    data: piFormatN,
-				    name: "Neuraminidase",
+				    name: "test feature 5",
 				    className: "test5",
 				    color: "#008B8D",
 				    type: "line",
@@ -252,7 +231,7 @@
 			
             } else {
 
-				var ftH = new FeatureViewer(sequenceH,
+				var ftH = new FeatureViewer(sequence,
 	               '#fvH',
 	                {
 	                    showAxis: true,
@@ -273,7 +252,7 @@
 				});
 
 
-				var ftN = new FeatureViewer(sequenceN,
+				var ftN = new FeatureViewer(sequence,
 	               '#fvN',
 	                {
 	                    showAxis: true,
@@ -295,6 +274,18 @@
 
 			}
                             
+			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
+			//var ft = new FeatureViewer(213,'#fv1');
+
+			// data should be dependent on the particular strain they send and should pull from db accordingly 
+			// Combination of H and N, 2:1 ratio in terms of weighting
+
+           
+			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
+			//var ft = new FeatureViewer(213,'#fv1');
+
+			
+
 		</script>
 
 		<script>
@@ -315,25 +306,5 @@
 
 		</script>
 
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-
-		<script>
-			var inputs = $('.input');
-			var paras = [$('.news-description').find('p'), $('.similarity-description').find('p')];
-			var i;
-			$(inputs).click(function(){
-			for(i in paras) {
-				
-					var t = $(this),
-							ind = t.index(),
-							matchedPara = $(paras[i]).eq(ind);
-					console.log(t)
-					
-					$(t).add(matchedPara).addClass('activet');
-					$(inputs).not(t).add($(paras[i]).not(matchedPara)).removeClass('activet');
-				}
-			}
-			); 
-		</script>
-
 </html>
+

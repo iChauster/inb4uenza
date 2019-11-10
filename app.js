@@ -46,24 +46,72 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // render the erfdror page
   res.status(err.status || 500);
   res.render('error');
 });
 
-app.listen(1000);
+app.listen(1008);
 
-function addStrain() {
-	var pathName = "";
+function addStrain(strainName, country, type, pathToFile) {
+	var pathName = pathToFile;
+	var strain;
+	var documentsToSave = []
 	fs.createReadStream(pathName)
 	    .pipe(parse({delimiter: ','}))
 	    .on('data', function(csvrow) {
-	        console.log(csvrow);
+	        strain = new Strain()
+	        firstColumn = csvrow.shift()
+	        
+	        var yearRange = csvrow.shift()
+	        if (yearRange == "year_range")
+	        	return	        
+	        var probIntervals = JSON.parse(csvrow.shift())
+	        console.log(probIntervals.length)
+	        var sequence = csvrow.shift()
+
+	        strain.strain = strainName
+	        strain.year = yearRange
+	        strain.seq = sequence
+	        strain.country = country
+	        strain.last = false
+	        strain.strainType = type
+	        strain.probabilityIntervals = probIntervals
+
+	        documentsToSave.push(strain)
+
 	    })
 	    .on('end',function() {
+	    	console.log("LAST STRAIN")
+	    	console.log(strain)
+	    	strain.last = true;
+	    	
+	    	for (var s in documentsToSave) {
+	    		console.log(documentsToSave[s].last)
+	    		documentsToSave[s].save();
+	    	}
 	      //do something wiht csvData
-	      console.log(csvData);
-	    });
+	    })
+	    .on('error', function(err){
+	    	console.log(err);
+	    })
 }
+
+function getRecent(strain, strainType){
+	Strain.findOne({strain: strain, last: true, strainType: strainType}).then(result => {
+		var array = result.probabilityIntervals;
+		array.sort(function(a,b){
+			return b[1] - a[1]
+		});
+		return array.slice(0,3)
+	}).catch(err => {console.log(err)})
+}
+
+
+
+
+
+
+
 
 module.exports = app;

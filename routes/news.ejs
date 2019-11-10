@@ -1,0 +1,119 @@
+<html>
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/calipho-sib/feature-viewer/v1.0.0/dist/feature-viewer.min.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+	<script src="https://cdn.rawgit.com/calipho-sib/feature-viewer/v1.0.0/dist/feature-viewer.bundle.js"></script>
+
+	<body>
+		<div class="splitl left">
+		    <div class="sidenav">
+		      <h2>News</h2>
+		      <a href= "/index">
+			      <button class = "about-btn">Back
+			      </button>
+			  </a>
+		    </div>
+		</div>
+
+		<div class="splitr right news">
+			<div class = "news-container">
+
+				<H2>News</H2>
+				<div class = "real-news">
+					<div class = "card news">
+					    <div class = "colorbar"></div>
+						    <img src="http://www.cidrap.umn.edu/sites/default/files/public/styles/detail/public/media/article/ferret_0.jpg?itok=YzB01f2k">
+						    <h2 class = "card-title">Study details pandemic potential of latest H7N9 flu strains</h2>
+						    <h4>(Center for Infectious Disease Research and Policy)</h4>
+						    <a href="http://www.cidrap.umn.edu/news-perspective/2017/10/study-details-pandemic-potential-latest-h7n9-flu-strains" class = "read-more">Read More</a>
+					</div>
+					<div class = "card news">
+						<div class = "colorbar"></div>
+						    <img src="https://www.statnews.com/wp-content/uploads/2019/06/GettyImages-95010096-1600x900.jpg">
+						    <h2 class = "card-title">The last pandemic was a ‘quiet killer.’</h2>
+						    <h4>(STAT News)</h4>
+						    <a href="https://www.statnews.com/2019/06/11/h1n1-swine-flu-10-years-later/" class = "read-more">Read More</a>
+					</div>
+					<div class = "card news">
+						<div class = "colorbar"></div>
+						    <img src="https://cdn.cnn.com/cnnnext/dam/assets/150203170827-h1n1-virion-particle-outbreak-5-exlarge-169.png">
+						    <h2 class = "card-title">H1N1 United States Fast Facts</h2>
+						    <h4>(CNN)</h4>
+						    <a href="https://www.cnn.com/2013/08/23/health/h1n1-u-s-fast-facts/index.html" class = "read-more">Read More</a>
+					</div>
+				</div>
+
+
+				<div class="publications">
+					<div class = "card news">
+						<div class = "colorbar"></div>
+							<h3>Journal of Infectious Diseases</h3>
+						    <h2 class = "card-title">Risk of Severe Influenza among Adults with Chronic Medical Conditions</h2>
+						    <h4>(Walker et. al)</h4>
+						    <h4>04 November 2019</h4>
+						    <a href="https://doi.org/10.1093/infdis/jiz570" class = "read-more">Read More</a>
+					</div>
+					<div class = "card news">
+						<div class = "colorbar"></div>
+							<h3>Journal of Bioengineering and Biomedical Science</h3>
+						    <h2 class = "card-title">Cellulose Monolith with Tunable Functionality for Immobilization of Influenza Virus</h2>
+						    <h4>(Pan et. al)</h4>
+						    <h4>12 April 2018</h4>
+						    <a href="https://www.omicsonline.org/open-access/cellulose-monolith-with-tunable-functionality-for-immobilization-of-influenza-virus-2155-9538-1000246-101283.html" class = "read-more">Read More</a>
+					</div>
+					<div class = "card news">
+						<div class = "colorbar"></div>
+							<h3>PLOS One Journal</h3>
+						    <h2 class = "card-title">Seroepidemiological Evidence of Subtype H3N8 Influenza Virus Infection among Pet Dogs in China</h2>
+						    <h4>(Zhou et. al)</h4>
+						    <h4>14 July 2016</h4>
+						    <a href="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0159106" class = "read-more">Read More</a>
+					</div>
+				</div>
+
+
+				<div class="maps">
+					<div class = "card news">
+					    	<div class = "colorbar"></div>
+					    <h2 class = "card-title">Severity</h2>
+					    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+       					<div id="regions_div" style="width: 900px; height: 500px;"></div>
+					</div>
+					<div class = "card news">
+					    	<div class = "colorbar"></div>
+					    <h2 class = "card-title">Severity</h2>
+					    <p></p>
+					    <h5 class = "read-more">Read More</h5>
+					</div>
+				</div>
+
+			</div>  	
+		</div>
+<script>
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Popularity'],
+          ['Germany', 200],
+          ['United States', 300],
+          ['Brazil', 400],
+          ['Canada', 500],
+          ['France', 600],
+          ['RU', 700]
+        ]);
+
+        var options = {};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+</script>
+</html>
+
