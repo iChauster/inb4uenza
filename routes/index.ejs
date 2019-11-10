@@ -11,28 +11,32 @@
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href="H3N2_1995-2009">N1</a>
-		        <a href="#">N2</a>
-		        <a href="#">N3</a>
+		        <a href="H1N1_2000-2000">N1</a>
+		        <a href="H1N2_2001-2001">N2</a>
+		        <a href="H1N3_1994-1994">N3</a>
 		      </div>
 
 		      <button class="dropdown-btn">H2
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href="#">N1</a>
-		        <a href="#">N2</a>
-		        <a href="#">N3</a>
+		        <a href="H2N1_1983-1985">N1</a>
+		        <a href="H2N2_1957-1958">N2</a>
+		        <a href="H2N3_1976-1976">N3</a>
 		      </div>
 
 		      <button class="dropdown-btn">H3
 		        <i class="fa fa-caret-down"></i>
 		      </button>
 		      <div class="dropdown-container">
-		        <a href="#">N1</a>
-		        <a href="#">N2</a>
-		        <a href="#">N3</a>
+		        <a href="H3N1_1980-1980">N1</a>
+		        <a href="H3N2_1971-1971">N2</a>
+		        <a href="H3N3_1976-1976">N3</a>
 		      </div>
+		      <a href= "/about" class = "about-btn">News
+			  </a>
+		      <a href= "/news" class = "about-btn">About
+			  </a>
 
 			  <a href= "/news" class = "news-btn">News</a>
 		      <a href= "/about" class = "about-btn">About
@@ -66,39 +70,18 @@
 					</div>
 			    </div>
 			</div>
-
+			
 			<div class = "timeline">
-							<div class="flex-parent">
+				<div class="flex-parent">
 					<div class="input-flex-container">
-						<div class="input">
-							<span data-year="1910"></span>
-						</div>
-						<div class="input">
-							<span data-year="1920"></span>
-						</div>
-						<div class="input activet">
-							<span data-year="1930"></span>
-						</div>
-						<div class="input">
-							<span data-year="1940"></span>
-						</div>
-						<div class="input">
-							<span data-year="1950"></span>
-						</div>
-						<div class="input">
-							<span data-year="1960"></span>
-						</div>
-						<div class="input">
-							<span data-year="1970"></span>
-						</div>
-						<div class="input">
-							<span data-year="1980"></span>
-						</div>
-						<div class="input">
-							<span data-year="1990"></span>
-						</div>
-						<div class="input">
-							<a href="H3N2_2014-2014"><span data-year="2000"></span></a>
+						<% for (var i = 0; i < yearRange.length; i++) { %>
+							<% if(currentYear == yearRange[i]){ %>
+				    			<div class="input activet"><a href= <%=hrefs[i] %>><span data-year= <%=yearRange[i] %>></span></a></div>
+				    		<%} else{ %>
+				    			<div class="input"><a href= <%=hrefs[i] %>><span data-year= <%=yearRange[i] %>></span></a></div>
+				    		<%}%>
+
+				    	<%} %>
 						</div>
 					</div>
 				</div>
