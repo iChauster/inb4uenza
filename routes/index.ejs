@@ -135,10 +135,8 @@
 			var sequenceN = "";
 			var h  = false;
   			var n = false;
-
-  			var f = <%= probabilityIntervalsH %>
 			
-  			<% if (probabilityIntervalsH != null){ %>
+  			<% if (locals.probabilityIntervalsH){ %>
 	    		<% for (var i = 0; i < probabilityIntervalsH.length; i++) { %>
 	    			piH.push([<%= probabilityIntervalsH[i] %>])
 	    		<%} %>
@@ -148,7 +146,7 @@
 
     		<% if (locals.probabilityIntervalsN){ %>
 	    		<% for (var i = 0; i < probabilityIntervalsN.length; i++) { %>
-	    			piH.push([<%= probabilityIntervalsN[i] %>])
+	    			piN.push([<%= probabilityIntervalsN[i] %>])
 	    		<%} %>
 	    		 sequenceN = "<%= sequenceN %>";
 	    		 n = <%= lastN %>;
@@ -166,6 +164,7 @@
 			// }
 
 			var mutationIntervalsH =  [];
+			var mutationIntervalsN =  [];
 
 			var probabilityIntervalsH = piH;
 			var probabilityIntervalsN = piN;
@@ -178,8 +177,6 @@
 			        y: probabilityIntervalsH[i][1]
 			    })
 			}
-
-			 var mutationIntervalsN =  [];
 
 			for (var i = 0; i < probabilityIntervalsN.length; i++){
 				mutationIntervalsN.push({
