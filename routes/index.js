@@ -22,7 +22,8 @@ router.get('/:strain', function(req, res, next) {
 		console.log("FOUND " + documents.length)
 		documents.forEach((doc) => {
 			avgYearArray = doc.year.split("-")
-			avgYear = 
+			avgYear = (parseInt(avgYearArray[0]) + parseInt(avgYearArray[1])) / 2
+
 			if (doc.year == year){
 				r = true
 				if (doc.strainType == "H"){

@@ -1,0 +1,310 @@
+<html>
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/calipho-sib/feature-viewer/v1.0.0/dist/feature-viewer.min.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+	<script src="https://cdn.rawgit.com/calipho-sib/feature-viewer/v1.0.0/dist/feature-viewer.bundle.js"></script>
+
+	<body>
+		<div class="splitl left">
+		    <div class="sidenav">
+		      <h2>Influenza A Strains</h2>
+		      <button class="dropdown-btn">H1
+		        <i class="fa fa-caret-down"></i>
+		      </button>
+		      <div class="dropdown-container">
+		        <a href="H1N1_1995-2009">N1</a>
+		        <a href="#">N2</a>
+		        <a href="#">N3</a>
+		      </div>
+
+		      <button class="dropdown-btn">H2
+		        <i class="fa fa-caret-down"></i>
+		      </button>
+		      <div class="dropdown-container">
+		        <a href="#">N1</a>
+		        <a href="#">N2</a>
+		        <a href="#">N3</a>
+		      </div>
+
+		      <button class="dropdown-btn">H3
+		        <i class="fa fa-caret-down"></i>
+		      </button>
+		      <div class="dropdown-container">
+		        <a href="#">N1</a>
+		        <a href="#">N2</a>
+		        <a href="#">N3</a>
+		      </div>
+		    </div>
+		</div>
+
+		<div class="splitr right">
+		  	<div id="fvH"></div>
+		  	<div id="fvN"></div>
+		  	<div id="fv2"></div>
+			<div class = "whiteBG">
+		  		<div id="fv1" class = "graph"></div>
+		  	</div>
+		  	<div class = "info">
+			  	<div id = "news" class = "card">
+			  		<div class = "colorbar"></div>
+			    <h2 class = "card-title">Past Outbreak News</h2>
+				    <div class = "description-flex-container news-description">
+				    	<p>news 1</p>
+						<p>news 2</p>
+						<p class="activet">news 3</p>
+						<p>news 4</p>
+						<p>news 5</p>
+						<p>news 6</p>
+						<p>news 7</p>
+						<p>news 8</p>
+						<p>news 9</p>
+						<p>news 10</p>
+					</div>
+			    	<h5 class = "read-more">Read More</h5>
+			    </div>
+			    <div class = "container">
+				    <div class = "card similarity">
+				    	<div class = "colorbar"></div>
+				    	<h2 class = "card-title">Strain Similarity</h2>
+				    	<div class = "description-flex-container similarity-description">
+					    	<p>This strain is 1% similar to the most recent strain</p>
+							<p>This strain is 2% similar to the most recent strain</p>
+							<p class="activet">This strain is 3% similar to the most recent strain</p>
+							<p>This strain is 4% similar to the most recent strain</p>
+							<p>This strain is 5% similar to the most recent strain</p>
+							<p>This strain is 6% similar to the most recent strain</p>
+							<p>This strain is 7% similar to the most recent strain</p>
+							<p>This strain is 8% similar to the most recent strain</p>
+							<p>This strain is 9% similar to the most recent strain</p>
+							<p>This strain is 10% similar to the most recent strain</p>
+						</div>
+						
+				    </div>
+				    <div class = "card severity">
+				    	<div class = "colorbar"></div>
+				    <h2 class = "card-title">Severity</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class = "timeline">
+							<div class="flex-parent">
+					<div class="input-flex-container">
+						<div class="input">
+							<span data-year="1910"></span>
+						</div>
+						<div class="input">
+							<span data-year="1920"></span>
+						</div>
+						<div class="input activet">
+							<span data-year="1930"></span>
+						</div>
+						<div class="input">
+							<span data-year="1940"></span>
+						</div>
+						<div class="input">
+							<span data-year="1950"></span>
+						</div>
+						<div class="input">
+							<span data-year="1960"></span>
+						</div>
+						<div class="input">
+							<span data-year="1970"></span>
+						</div>
+						<div class="input">
+							<span data-year="1980"></span>
+						</div>
+						<div class="input">
+							<span data-year="1990"></span>
+						</div>
+						<div class="input">
+							<a href="H3N2_2014-2014"><span data-year="2000"></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		  </div>
+		</div>
+		
+		<script>
+
+			var pi = [];
+    		<% for (var i = 0; i < probabilityIntervals.length; i++) { %>
+    			pi.push([<%= probabilityIntervals[i] %>])
+    		<%}%>
+    		console.log(pi)
+
+			var sequence = "<%= sequence %>";
+			console.log(sequence)
+			var ddata = [];
+
+			for (var i=1;i<100;i++) {
+			    var count = Math.floor((Math.random() * 20) + 1);
+		        ddata.push({
+		            x: i*2,
+		            y:count
+		        })
+			}
+
+			var mutationIntervalsH =  [];
+			var probabilityIntervals = pi;
+			var piFormatH = [];
+			var piFormatN = [];
+
+			for (var i = 0; i < probabilityIntervals.length; i++){
+				mutationIntervalsH.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			}
+
+			 var mutationIntervalsN =  [];
+
+			for (var i = 0; i < probabilityIntervals.length; i++){
+				mutationIntervalsN.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			}
+  			
+  			for (var i = 0; i < probabilityIntervals.length; i++){
+				piFormatH.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			}
+
+			for (var i = 0; i < probabilityIntervals.length; i++){
+				piFormatN.push({
+			        x: probabilityIntervals[i][0],
+			        y: probabilityIntervals[i][1]
+			    })
+			}
+
+  			var b = <%= viewpd %>;
+
+  			if (b) {
+				var pftH = new FeatureViewer(sequence,
+	               '#fv2',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+				console.log("HELLO")
+				console.log(piFormatH);
+
+				pftH.addFeature({
+				    data: piFormatH,
+				    name: "test feature 5",
+				    className: "test5",
+				    color: "#008B8D",
+				    type: "line",
+				    filter: "type2"
+				});
+
+				var pftN = new FeatureViewer(sequence,
+	               '#fv2',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+				console.log("HELLO")
+				console.log(piFormatN);
+
+				pftN.addFeature({
+				    data: piFormatN,
+				    name: "test feature 5",
+				    className: "test5",
+				    color: "#008B8D",
+				    type: "line",
+				    filter: "type2"
+				});
+			
+            } else {
+
+				var ftH = new FeatureViewer(sequence,
+	               '#fvH',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+
+				ftH.addFeature({
+				    data: mutationIntervalsH,
+					name: "Hemagglutinin",
+					className: "test1",
+					color: "#005572",
+					type: "rect",
+	   				filter: "type1"
+				});
+
+
+				var ftN = new FeatureViewer(sequence,
+	               '#fvN',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+
+				ftN.addFeature({
+				    data: mutationIntervalsN,
+					name: "Neuraminidase",
+					className: "test1",
+					color: "#005572",
+					type: "rect",
+					filter: "type1"
+				});
+
+			}
+                            
+			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
+			//var ft = new FeatureViewer(213,'#fv1');
+
+			// data should be dependent on the particular strain they send and should pull from db accordingly 
+			// Combination of H and N, 2:1 ratio in terms of weighting
+
+           
+			//Instead of a sequence, you can also initialize the feature viewer with a length (integer) :
+			//var ft = new FeatureViewer(213,'#fv1');
+
+			
+
+		</script>
+
+		<script>
+			var dropdown = document.getElementsByClassName("dropdown-btn");
+			var i;
+
+			for (i = 0; i < dropdown.length; i++) {
+			  dropdown[i].addEventListener("click", function() {
+			    this.classList.toggle("active");
+			    var dropdownContent = this.nextElementSibling;
+			    if (dropdownContent.style.display === "block") {
+			      dropdownContent.style.display = "none";
+			    } else {
+			      dropdownContent.style.display = "block";
+			    }
+			  });
+			}
+
+		</script>
+
+</html>
+
