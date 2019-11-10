@@ -35,6 +35,11 @@
   background-color: #f5f5ff;
 }
 
+.right-abt {
+  right: 0;
+  background-color: white;
+}
+
 /* Control the body */
 body {
   background-color: #dadae6;
@@ -142,7 +147,7 @@ body {
 .whiteBG {
   margin: -10px;
   margin-top: -30px;
-  padding: 20px;
+  padding: 40px 20px 20px 35px ;
   background-color: white;
 }
 
@@ -332,44 +337,30 @@ body {
   }
 }
 
-
-
-
-
-
-
-
-@-webkit-keyframes fadeOutLeft {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-  }
+.first-abt {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 30px 0px 30px;
 }
 
-@keyframes fadeOutLeft {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-  }
+.second-abt {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px 0px 30px;
 }
 
-.fadeOutLeft {
-  -webkit-animation-name: fadeOutLeft;
-  animation-name: fadeOutLeft;
+.second-abt img {
+  object-fit: cover;
+  width: 350px;
+  height: 400px;
 }
 
-
-
+.third-abt {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px 30px 30px;
+  margin-top: -15px;
+}
 
 
 
