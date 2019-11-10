@@ -97,8 +97,12 @@
 				<div class="flex-parent">
 					<div class="input-flex-container">
 						<% for (var i = 0; i < yearRange.length; i++) { %>
+							<% if(currentYear == yearRange[i]){ %>
+				    			<div class="input activet"><a href= <%=hrefs[i] %>><span data-year= <%=yearRange[i] %>></span></a></div>
+				    		<%} else{ %>
+				    			<div class="input"><a href= <%=hrefs[i] %>><span data-year= <%=yearRange[i] %>></span></a></div>
+				    		<%}%>
 
-				    		<a href= <%=hrefs[i] %>><div class="input"><span data-year= <%=yearRange[i] %>></span></div></a>
 				    	<%} %>
 						</div>
 					</div>
