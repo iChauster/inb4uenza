@@ -88,8 +88,24 @@ body {
 }
 
 /* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
+.sidenav a:hover, .dropdown-btn:hover, .about-btn:hover {
   color: #f1f1f1;
+}
+
+.about-btn {
+  padding: 6px 8px 6px 16px;
+  border: none;
+  text-decoration: none
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  background: none;
+  width:80%;
+  text-align: left;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
 }
 
 /* Main content */
