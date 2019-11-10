@@ -45,11 +45,12 @@ router.get('/:strain', function(req, res, next) {
 		yearRange.sort(function(a,b){
 			return a["average"] - b["average"]
 		});
-
+		hrefs = []
 		if (yearRange[0]){
 			finalRange = [yearRange[0]["average"]]
+			hrefs.push("/" + yearRange[0]["strain"] + "_" + yearRange[0]["year"])
 		}
-		hrefs = []
+		
 		for (var i = 1; i < yearRange.length; i ++){
 			if(yearRange[i]["average"] - finalRange[finalRange.length-1] >= 2){
 				var item = yearRange[i]

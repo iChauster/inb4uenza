@@ -5,7 +5,7 @@ from random import randint
 from Bio import pairwise2
 from Bio.pairwise2 import format_alignment
 
-for file in range(17,19):
+for file in range(0,20):
 	string_1 = "../Downloads/FASTA ("+str(file)+").fa"
 	string_2 = "../Downloads/flu ("+str(file)+").txt"
 
