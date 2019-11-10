@@ -15,6 +15,7 @@ router.get('/:strain', function(req, res, next) {
 	var year = split[1]
 
 	yearRange = []
+	var currentYear;
 	Strain.find({strain: strain, country:"All"}, function(err, documents){
 		var r = false
 		var resultH;
@@ -26,6 +27,7 @@ router.get('/:strain', function(req, res, next) {
 			yearRange.push({strain: doc.strain, year: doc.year, average:parseInt(avgYear)})
 
 			if (doc.year == year){
+				currentYear = parseInt(avgYear)
 				r = true
 				if (doc.strainType == "H"){
 					resultH = doc
@@ -73,6 +75,7 @@ router.get('/:strain', function(req, res, next) {
 			}
 			sendObject["yearRange"] = finalRange
 			sendObject["hrefs"] = hrefs
+			sendObject["currentYear"] = currentYear
 			res.render("index", sendObject)
 		}
 	})
