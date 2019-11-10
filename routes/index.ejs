@@ -185,7 +185,51 @@
 				    type: "line",
 				    filter: "type2"
 				});
-            } else if (n) {
+            } else {
+
+				var ftH = new FeatureViewer(sequenceH,
+	               '#fvH',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+
+				ftH.addFeature({
+				    data: mutationIntervalsH,
+					name: "Hemagglutinin",
+					className: "test1",
+					color: "#005572",
+					type: "rect",
+	   				filter: "type1"
+				});
+
+
+				var ftN = new FeatureViewer(sequenceN,
+	               '#fvN',
+	                {
+	                    showAxis: true,
+	                    showSequence: true,
+	                    brushActive: true, //zoom
+	                    toolbar:true, //current zoom & mouse position
+	                    bubbleHelp:true, 
+	                    zoomMax:50 //define the maximum range of the zoom
+	                });
+
+				ftN.addFeature({
+				    data: mutationIntervalsN,
+					name: "Neuraminidase",
+					className: "test1",
+					color: "#005572",
+					type: "rect",
+					filter: "type1"
+				});
+
+			}
+             if (n) {
 				var pftN = new FeatureViewer(sequenceN,
 	               '#fv2',
 	                {
