@@ -5,9 +5,9 @@ from random import randint
 from Bio import pairwise2
 from Bio.pairwise2 import format_alignment
 
-for file in range(0,20):
-	string_1 = "../Downloads/FASTA ("+str(file)+").fa"
-	string_2 = "../Downloads/flu ("+str(file)+").txt"
+for file in range(19,20):
+	string_1 = "../FASTA ("+str(file)+").fa"
+	string_2 = "../flu ("+str(file)+").txt"
 
 	#open FASTA file
 	with open(string_1,'r') as f:
@@ -257,4 +257,5 @@ def processing(alignments,length):
 	df = pd.DataFrame(data, columns=['year_range','intervals','sequences'])
 	name = labels['serotype'][1]+"_"+labels['segment'][1][0:1]+"_"+labels['country'][1]
 	df.to_csv(name)
+	print(df)
 	print(file)
