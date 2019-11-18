@@ -7,9 +7,6 @@ var path = require('path');
 router.get('/', function(req, res, next) {
 	res.render("index")
 });
-router.get('/index', function(req, res, next) {
-	res.render("index")
-});
 router.get('/about', function(req, res, next) {
 	res.render("about")
 });
