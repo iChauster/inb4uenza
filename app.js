@@ -51,6 +51,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(1009);
+app.listen(process.env.PORT || 1000);
 /*
 function addStrain(strainName, country, type, pathToFile) {
 	var pathName = pathToFile;

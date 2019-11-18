@@ -4,8 +4,8 @@ var router = express.Router();
 var path = require('path');
 
 /* GET home page. */
-router.get('/index', function(req, res, next) {
-	res.render("index")
+router.get('/', function(req, res, next) {
+	res.render("about")
 });
 router.get('/about', function(req, res, next) {
 	res.render("about")
