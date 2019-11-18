@@ -5,7 +5,7 @@ var path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render("about")
+	res.render("index")
 });
 router.get('/about', function(req, res, next) {
 	res.render("about")
