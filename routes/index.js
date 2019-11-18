@@ -7,11 +7,6 @@ var path = require('path');
 router.get('/', function(req, res, next) {
 	res.render("index")
 });
-
-router.get('/index', (req, res, next) => {
-	res.render("index")
-});
-
 router.get('/about', function(req, res, next) {
 	res.render("about")
 });
@@ -31,7 +26,6 @@ router.get('/:strain', function(req, res, next) {
 		var r = false
 		var resultH;
 		var resultN;
-		var finalRange = []
 		console.log("FOUND " + documents.length)
 		documents.forEach((doc) => {
 			avgYearArray = doc.year.split("-")
